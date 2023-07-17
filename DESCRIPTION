@@ -16,12 +16,22 @@ Imports:
     DBI,
     dplyr,
     ggsci,
+    grDevices,
     readr,
     RMariaDB,
+    stats,
     stringr,
     tibble,
     tidyr,
+    utils,
     workflowr
+Suggests: 
+    config,
+    glue,
+    lubridate,
+    purrr,
+    ssh,
+    vroom
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
