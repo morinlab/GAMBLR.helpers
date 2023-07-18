@@ -1,4 +1,5 @@
 # global set of aliases for finding specific sets of colours
+#' @export
 colour_aliases = list("COO_consensus" = "coo", "COO" = "coo", "DHITsig_consensus" = "coo",
                       "pathology" = "pathology", "analysis_cohort" = "pathology", "group" = "pathology",
                       "FL_group" = "FL", "lymphgen" = "lymphgen", "lymphgen_with_cnv" = "lymphgen",
@@ -8,6 +9,7 @@ colour_aliases = list("COO_consensus" = "coo", "COO" = "coo", "DHITsig_consensus
 
 
 
+#' @export
 gene_mutation_tally = function(maf_df,these_samples_metadata,these_genes,grouping_variable="cohort"){
   meta = dplyr::select(these_samples_metadata,sample_id,{{grouping_variable}})
   maf_filt = dplyr::filter(maf_df,Hugo_Symbol %in% these_genes, Variant_Classification %in% coding_class) %>%
@@ -55,6 +57,7 @@ gene_mutation_tally = function(maf_df,these_samples_metadata,these_genes,groupin
 #'                                    column_alias = list("nothing" = "FL"),
 #'                                    as_vector = F)
 #'
+#' @export
 map_metadata_to_colours = function(metadataColumns,
                                    these_samples_metadata,
                                    column_alias = list(),
@@ -196,6 +199,7 @@ map_metadata_to_colours = function(metadataColumns,
 #'
 #' @noRd
 #'
+#' @export
 plot_multi_timepoint = function(mafs,
                                 this_sample_id,
                                 genes,
@@ -372,6 +376,7 @@ plot_multi_timepoint = function(mafs,
 #' @rawNamespace import(data.table, except = c("last", "first", "between", "transpose"))
 #' @import dplyr tidyr circlize ComplexHeatmap tibble
 #'
+#' @export
 plot_mutation_dynamics_heatmap = function(maf1,
                                           maf2,
                                           vafcolname,
@@ -522,6 +527,7 @@ plot_mutation_dynamics_heatmap = function(maf1,
 #' @examples
 #' trimmed = trim_scale_expression(2)
 #'
+#' @export
 trim_scale_expression = function(x){
   quants = unname(quantile(x, probs = c(0.05, 0.95), na.rm = TRUE))
   x = ifelse(x < quants[1], quants[1], x)

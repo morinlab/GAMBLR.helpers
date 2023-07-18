@@ -1,4 +1,5 @@
 #adding coding_vc to global enviroment
+#' @export
 coding_vc = c("Frame_Shift_Del", "Frame_Shift_Ins", "In_Frame_Del", "In_Frame_Ins", "Missense_Mutation", "Nonsense_Mutation", "Nonstop_Mutation", "Splice_Region", "Splice_Site", "Targeted_Region", "Translation_Start_Site")
 
 
@@ -20,6 +21,7 @@ coding_vc = c("Frame_Shift_Del", "Frame_Shift_Ins", "In_Frame_Del", "In_Frame_In
 #' annotated = annotate_recurrent_cnv(seg_df = my_segs)
 #' }
 #' 
+#' @export
 annotate_recurrent_cnv = function(seg_df,
                                   seg_file){
 

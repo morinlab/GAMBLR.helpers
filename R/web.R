@@ -1,3 +1,4 @@
+#' @export
 web_add_update_page = function(path_to_markdown){
 }
 
@@ -16,6 +17,7 @@ web_add_update_page = function(path_to_markdown){
 #'
 #' @noRd
 #'
+#' @export
 web_initialize_gambl_site = function(site_base_name,
                                      base_directory = "/home/rmorin/",
                                      my_name = "Ryan Morin",

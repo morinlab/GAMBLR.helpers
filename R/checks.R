@@ -1,4 +1,5 @@
 #Global variable specifying what metadata columns are absolutely required
+#' @export
 required_cols = c("sample_id","patient_id","pathology","seq_type","genome_build","pairing_status","Tumor_Sample_Barcode")
 
 
@@ -19,6 +20,7 @@ required_cols = c("sample_id","patient_id","pathology","seq_type","genome_build"
 #' @examples
 #' check_config_value(config::get("resources")$blacklist$template)
 #'
+#' @export
 check_config_value = function(config_key){
   if(is.null(config_key)){
     stop(paste0("ATTENTION! The above described key is missing from the config, make sure your config is up to date"))
@@ -29,6 +31,7 @@ check_config_value = function(config_key){
 
 
 
+#' @export
 check_expected_outputs = function(tool_name="battenberg",seq_type_filter="genome"){
   projection = get_template_wildcards("projections")
   #drop irrelevant rows of the metadata based on the scope of the tool etc
@@ -58,6 +61,7 @@ check_expected_outputs = function(tool_name="battenberg",seq_type_filter="genome
 
 
 
+#' @export
 check_file_details = function(relative_paths){
   not_found = c()
   base_path = check_config_value(config::get("project_base"))
@@ -78,6 +82,7 @@ check_file_details = function(relative_paths){
 
 
 
+#' @export
 check_times = function(relative_paths,
                        archive_mode = FALSE,
                        force_backup = FALSE){
@@ -135,6 +140,7 @@ check_times = function(relative_paths,
 
 
 
+#' @export
 copy_no_clobber = function(from_file,
                            to_file,
                            force = FALSE){
@@ -149,6 +155,7 @@ copy_no_clobber = function(from_file,
 
 
 
+#' @export
 get_runs_table = function(seq_type_filter="genome"){
   t_meta = get_gambl_metadata(tissue_status_filter = c("tumour"),seq_type_filter=seq_type_filter) %>%
     dplyr::select(sample_id,patient_id,seq_type,genome_build,pairing_status,unix_group) %>%
@@ -166,6 +173,7 @@ get_runs_table = function(seq_type_filter="genome"){
 
 
 
+#' @export
 get_template_wildcards = function(parent_key,
                                   template_key){
 
@@ -181,6 +189,7 @@ get_template_wildcards = function(parent_key,
 
 
 #helper function to get the unmatched normals from the main config
+#' @export
 get_unmatched_normals = function(seq_type_filter){
   a = check_config_value(config::get("unmatched_normal_ids"))
   df = melt(a,value.name="normal_sample_id") %>%
@@ -192,6 +201,7 @@ get_unmatched_normals = function(seq_type_filter){
 
 
 #Helper functions not for export
+#' @export
 grob_wildcards = function(wildcarded_string){
   wildcards = unlist(stringr::str_extract_all(wildcarded_string,"\\{[^\\{]+\\}"))
   wildcards = stringr::str_remove_all(wildcards,"\\{") %>%  stringr::str_remove_all(.,"\\}")

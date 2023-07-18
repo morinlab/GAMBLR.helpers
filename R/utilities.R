@@ -1,7 +1,9 @@
+#' @export
 coding_class = c("Frame_Shift_Del", "Frame_Shift_Ins", "In_Frame_Del", "In_Frame_Ins", "Missense_Mutation", "Nonsense_Mutation", "Nonstop_Mutation", "Silent", "Splice_Region", "Splice_Site", "Targeted_Region", "Translation_Start_Site")
 
 
 
+#' @export
 rainfall_conv = c("T>C", "T>C", "C>T", "C>T", "T>A", "T>A", "T>G", "T>G", "C>A", "C>A", "C>G", "C>G", "InDel")
 names(rainfall_conv) = c('A>G', 'T>C', 'C>T', 'G>A', 'A>T', 'T>A', 'A>C', 'T>G', 'C>A', 'G>T', 'C>G', 'G>C', 'InDel')
 
@@ -11,6 +13,7 @@ ssh_session <<- NULL
 
 
 
+#' @export
 cache_output = function(result_df,
                         function_name,
                         clobber_mode = F,
@@ -66,6 +69,7 @@ cache_output = function(result_df,
 #' @examples
 #' table = collate_ancestry(sample_table = "my_sample_table.txt")
 #'
+#' @export
 collate_ancestry = function(sample_table,
                             seq_type_filter="genome",
                             somalier_output){
@@ -104,6 +108,7 @@ collate_ancestry = function(sample_table,
 #' @examples
 #' sample_table = collate_ashm_results(sample_table = sample_table)
 #'
+#' @export
 collate_ashm_results = function(sample_table,
                                 seq_type_filter = "genome"){
 
@@ -150,6 +155,7 @@ collate_ashm_results = function(sample_table,
 #' @examples
 #' gambl_results_derived = collate_csr_results(gambl_results_derived)
 #'
+#' @export
 collate_csr_results = function(sample_table,
                                seq_type_filter = "genome"){
 
@@ -186,6 +192,7 @@ collate_csr_results = function(sample_table,
 #' @examples
 #' gambl_results_derived = collate_curated_sv_results(gambl_results_derived)
 #'
+#' @export
 collate_curated_sv_results = function(sample_table,
                                       seq_type_filter = "genome"){
 
@@ -222,6 +229,7 @@ collate_curated_sv_results = function(sample_table,
 #' @examples
 #' gambl_results_derived = collate_derived_results(samples_df)
 #'
+#' @export
 collate_derived_results = function(sample_table,
                                    seq_type_filter = "genome",
                                    from_flatfile = FALSE){
@@ -264,6 +272,7 @@ collate_derived_results = function(sample_table,
 #' @examples
 #' table = collate_extra_metadata(sample_table = "my_sample_table.txt")
 #'
+#' @export
 collate_extra_metadata = function(sample_table,
                                   file_path){
 
@@ -292,6 +301,7 @@ collate_extra_metadata = function(sample_table,
 #' @examples
 #' sample_table = collate_nfkbiz_results(sample_table = sample_table)
 #'
+#' @export
 collate_nfkbiz_results = function(sample_table,
                                   seq_type_filter = "genome"){
 
@@ -344,6 +354,7 @@ collate_nfkbiz_results = function(sample_table,
 #' meta_capture <- get_gambl_metadata(seq_type_filter = "capture")
 #' pga_metrics_capture <- collate_pga(these_samples_metadata = meta_capture)
 #'
+#' @export
 collate_pga <- function(
     these_samples_metadata,
     this_seq_type = "genome"
@@ -406,6 +417,7 @@ collate_pga <- function(
 #' @examples
 #' qc_metrics = collate_qc_results(sample_table = sample_table)
 #'
+#' @export
 collate_qc_results = function(sample_table,
                               seq_type_filter = "genome"){
 
@@ -482,6 +494,7 @@ collate_qc_results = function(sample_table,
 #' collated = collate_sbs_results(sample_table = sample_table,
 #'                                sbs_manipulation = sbs_manipulation)
 #
+#' @export
 collate_sbs_results = function(sample_table,
                                seq_type_filter = "genome",
                                file_path,
@@ -576,6 +589,7 @@ collate_sbs_results = function(sample_table,
 #' ssm_results = colalte_ssm_results(sample_table = samples,
 #'                                   include_silent = TRUE)
 #'
+#' @export
 collate_ssm_results = function(sample_table,
                                seq_type_filter = "genome",
                                projection = "grch37",
@@ -667,6 +681,7 @@ collate_ssm_results = function(sample_table,
 #'                                      tool = "manta",
 #'                                      oncogenes = c("MYC", "BCL2"))
 #'
+#' @export
 collate_sv_results = function(sample_table,
                               tool = "manta",
                               seq_type_filter = "genome",
@@ -713,6 +728,7 @@ collate_sv_results = function(sample_table,
 
 
 
+#' @export
 compare_coding_mutation_pattern = function(maf_df1,maf_df2,gene){
   if(missing(maf_df1) | missing(maf_df2)){
     stop("must provide two data frames containing mutations you would like to compare")
@@ -761,6 +777,7 @@ compare_coding_mutation_pattern = function(maf_df1,maf_df2,gene){
 #' @noRd
 #'
 #' @rawNamespace import(data.table, except = c("last", "first", "between", "transpose"))
+#' @export
 compare_mutation_flavour = function(these_sample_ids,
                                     flavour1 = "clustered",
                                     flavour2 = ""){
@@ -794,6 +811,7 @@ compare_mutation_flavour = function(these_sample_ids,
 #' @examples
 #' ref_meta = referesh_metadata_tables()
 #'
+#' @export
 referesh_metadata_tables = function(){
 
   con = dbConnect(RMariaDB::MariaDB(), dbname = database_name)
@@ -826,6 +844,7 @@ referesh_metadata_tables = function(){
 #' @examples
 #' refresh_full_table(table_x, con,file_x)
 #'
+#' @export
 refresh_full_table = function(table_name,
                               connection,
                               file_path){
@@ -852,6 +871,7 @@ refresh_full_table = function(table_name,
 #' @examples
 #' chr_start_end = region_to_chunks("chr1:1111-2222")
 #'
+#' @export
 region_to_chunks = function(region){
 
   region = unname(region)
@@ -882,6 +902,7 @@ region_to_chunks = function(region){
 #' @examples
 #' sane_meta_data = sanity_check_metadata()
 #'
+#' @export
 sanity_check_metadata = function(){
 
   cfg = check_config_value(config::get("tables"))
@@ -926,6 +947,7 @@ sanity_check_metadata = function(){
 
 
 
+#' @export
 socketWrite = function (sock, string) {
   print(string)
   write.socket(sock, string)
@@ -954,6 +976,7 @@ socketWrite = function (sock, string) {
 #' standardize_chr_prefix(incoming_vector = these_chrs,
 #'                        projection = "hg38")
 #'
+#' @export
 standardize_chr_prefix = function(incoming_vector,
                                   projection){
 
@@ -991,6 +1014,7 @@ standardize_chr_prefix = function(incoming_vector,
 #' subset_cnstates(cn_segments = cn_states,
 #'                 samplen = 1)
 #'
+#' @export
 subset_cnstates = function(cn_segments,
                            include_2 = FALSE,
                            samplen){
@@ -1016,6 +1040,7 @@ subset_cnstates = function(cn_segments,
 
 
 
+#' @export
 test_glue = function(placeholder="INSERTED"){
   some_string = "this text has {placeholder}"
   print(some_string)

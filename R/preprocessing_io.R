@@ -1,4 +1,5 @@
 # adding coding class to global environment
+#' @export
 coding_class = c("Frame_Shift_Del", "Frame_Shift_Ins", "In_Frame_Del", "In_Frame_Ins", "Missense_Mutation", "Nonsense_Mutation", "Nonstop_Mutation", "Silent", "Splice_Region", "Splice_Site", "Targeted_Region", "Translation_Start_Site")
 
 
@@ -18,6 +19,7 @@ coding_class = c("Frame_Shift_Del", "Frame_Shift_Ins", "In_Frame_Del", "In_Frame
 #' results = populate_tool_results(tool_name = "slims_3")
 #' }
 #' 
+#' @export
 populate_tool_results = function(tool_name){
 
   #IMPORTANT TODO: This function should only ever work with samples that exist in the metadata
@@ -52,6 +54,7 @@ populate_tool_results = function(tool_name){
 #' 
 #' @noRd
 #'
+#' @export
 process_all_manta_bedpe = function(file_df,
                                    out_dir,
                                    group,
@@ -193,6 +196,7 @@ process_all_manta_bedpe = function(file_df,
 #'                                              out_dir = "../")
 #' }
 #' 
+#' @export
 read_merge_manta_with_liftover = function(bedpe_paths = c(),
                                           pattern = "--matched",
                                           out_dir){

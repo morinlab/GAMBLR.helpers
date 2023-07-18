@@ -31,6 +31,7 @@
 #' cbioportal_create(this_seqtype = "capture", description = "GAMBL data from exomes")
 #' }
 #' 
+#' @export
 cbioportal_create = function(this_seqtype = "genome",
                              short_name = "GAMBL",
                              human_friendly_name = "GAMBL data",

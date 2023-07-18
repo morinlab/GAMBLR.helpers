@@ -1,3 +1,4 @@
+#' @export
 bins_to_bedgraph = function(bin_df,min_value = 3,filename = "test.bed"){
   bed_cols = dplyr::select(bin_df,1,2,3,smoothed_ratio)
   colnames(bed_cols) = c("chr","start","end","value")
@@ -14,6 +15,7 @@ bins_to_bedgraph = function(bin_df,min_value = 3,filename = "test.bed"){
 
 
 
+#' @export
 build_browser_ashm = function(browser_base_path="/Users/rmorin/git/LLMPP/",
                               projection="grch37",
                               hub_path="hubs/ashm/",
@@ -63,6 +65,7 @@ build_browser_ashm = function(browser_base_path="/Users/rmorin/git/LLMPP/",
 
 
 
+#' @export
 build_browser_lymphomagene = function(browser_base_path="/Users/rmorin/git/LLMPP/",
                               projection="grch37",
                               hub_path="hubs/ashm/",
@@ -113,6 +116,7 @@ build_browser_lymphomagene = function(browser_base_path="/Users/rmorin/git/LLMPP
 
 
 
+#' @export
 deblacklist_regions = function(regions_bed,projection="grch37"){
   if(projection=="grch37"){
     blacklist_file = "/Users/rmorin/git/LLMPP/resources/reference/encode/hg19-blacklist.v2.bed"
@@ -139,6 +143,7 @@ deblacklist_regions = function(regions_bed,projection="grch37"){
 
 
 
+#' @export
 load_combine_cached_bins = function(function_params=list(bin_size=15000),
   additional_details=list(foreground="DLBCL_FL",background="CLL_MM")){
 
