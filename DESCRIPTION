@@ -15,6 +15,7 @@ Imports:
     data.table,
     DBI,
     dplyr,
+    GAMBLR,
     ggsci,
     grDevices,
     readr,
@@ -32,6 +33,8 @@ Suggests:
     purrr,
     ssh,
     vroom
+Remotes:
+    morinLab/GAMBLR
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
