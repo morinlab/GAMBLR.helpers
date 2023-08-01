@@ -12,6 +12,7 @@ Depends:
 Imports: 
     circlize,
     ComplexHeatmap,
+    config,
     data.table,
     DBI,
     dplyr,
@@ -19,24 +20,22 @@ Imports:
     ggplot2,
     ggrepel,
     ggsci,
+    glue,
     grDevices,
     grid,
+    lubridate,
     magrittr,
+    purrr,
     readr,
     RMariaDB,
+    ssh,
     stats,
     stringr,
     tibble,
     tidyr,
     utils,
+    vroom,
     workflowr
-Suggests: 
-    config,
-    glue,
-    lubridate,
-    purrr,
-    ssh,
-    vroom
 Remotes:
     morinLab/GAMBLR
 Encoding: UTF-8
