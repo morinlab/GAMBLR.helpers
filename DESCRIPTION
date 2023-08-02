@@ -15,11 +15,13 @@ Imports:
     dplyr,
     glue,
     lubridate,
+    philentropy,
     readr,
     reshape2,
     ssh,
     stringr,
     tibble,
+    tidyr,
     utils,
     workflowr
 Encoding: UTF-8
