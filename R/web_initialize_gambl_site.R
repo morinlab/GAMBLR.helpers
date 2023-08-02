@@ -1,9 +1,3 @@
-#' @export
-web_add_update_page = function(path_to_markdown){
-}
-
-
-
 #' @title Web Initialize GAMBL Site.
 #'
 #' @description Set up a fresh instance of a website to host on gitlab.
