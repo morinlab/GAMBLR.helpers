@@ -2,7 +2,6 @@
 
 export(bins_to_bedgraph)
 export(cache_output)
-export(cbioportal_create)
 export(check_config_value)
 export(check_file_details)
 export(check_times)
