@@ -8,14 +8,19 @@
 #'
 #' @return data frame
 #'
-#' @import GAMBLR.data
+#' @param this_seq_type The seq type of the samples to return with metadata.
+#'
+#' @import GAMBLR.data dplyr
 #'
 #' @noRd
 #'
 #' @export
-handle_metadata = function() {
+handle_metadata = function(this_seq_type = "genome") {
     if ("GAMBLR.data" %in% installed.packages()) {
-        return(GAMBLR.data::gambl_metadata)
+        return(
+            GAMBLR.data::gambl_metadata %>%
+                dplyr::filter(seq_type %in% this_seq_type)
+        )
     }else if ("GAMBLR.results" %in% installed.packages()) {
         stop(
             "Use GAMBLR.results::get_gambl_metadata() to obtain the metadata."
