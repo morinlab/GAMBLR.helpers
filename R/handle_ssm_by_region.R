@@ -1,4 +1,4 @@
-#' @title Helper SSM by Region
+#' @title Handle SSM by Region
 #'
 #' @description Subset an incoming MAF to desired regions.
 #'
@@ -23,9 +23,9 @@
 #'
 #' @examples
 #' my_maf = GAMBLR.data::sample_data$grch37$maf
-#' my_mutations = helper_ssm_by_region(this_maf = my_maf, region = "chr8:128,723,128-128,774,067")
+#' my_mutations = handle_ssm_by_region(this_maf = my_maf, region = "chr8:128,723,128-128,774,067")
 #'
-helper_ssm_by_region = function(this_maf,
+handle_ssm_by_region = function(this_maf,
                                 chromosome,
                                 qstart,
                                 qend,
