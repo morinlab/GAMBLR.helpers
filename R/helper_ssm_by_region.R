@@ -17,6 +17,7 @@
 #' @param region Region formatted like chrX:1234-5678 instead of specifying chromosome, start and end separately.
 #'
 #' @return A MAF that has been subset to the regions specified.
+#' @export
 #'
 #' @import dplyr
 #'
