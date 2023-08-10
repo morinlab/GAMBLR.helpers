@@ -2,7 +2,7 @@
 #'
 #' @description Parse a region string into; chromosome, start and end.
 #'
-#' @details To convert region into chunks of chr, start, and end.
+#' @details INTERNAL FUNCTION called by [GAMBLR::calc_mutation_frequency_bin_region], not meant for out-of-package usage.
 #'
 #' @param region A region string e.g. "chrX:12345-678910".
 #'
