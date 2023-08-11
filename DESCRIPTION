@@ -26,6 +26,6 @@ Imports:
     utils,
     workflowr
 Remotes:
-    morinLab/GAMBLR.data
+    morinlab/GAMBLR.data
 Encoding: UTF-8
 RoxygenNote: 7.2.3
