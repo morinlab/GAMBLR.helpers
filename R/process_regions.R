@@ -75,7 +75,7 @@ process_regions <- function(regions_list = NULL,
   } else {
     # Convert character vector of regions to df
     regions_bed <- bind_rows(lapply(regions_list, function(x) {
-      chunks <- GAMBLR:::region_to_chunks(x)
+      chunks <- region_to_chunks(x)
       df <- data.frame(
         chrom = chunks$chromosome,
         start = as.numeric(chunks$start),
