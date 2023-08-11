@@ -17,6 +17,9 @@
 #' @export
 handle_metadata = function(this_seq_type = "genome") {
     if ("GAMBLR.data" %in% installed.packages()) {
+        message(
+            "Using bundled metadata from GAMBLR.data"
+        )
         return(
             GAMBLR.data::gambl_metadata %>%
                 dplyr::filter(seq_type %in% this_seq_type)
