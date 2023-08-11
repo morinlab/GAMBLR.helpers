@@ -19,7 +19,7 @@
 #' @return A MAF that has been subset to the regions specified.
 #' @export
 #'
-#' @import dplyr
+#' @import dplyr stringr
 #'
 #' @examples
 #' my_maf = GAMBLR.data::sample_data$grch37$maf
