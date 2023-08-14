@@ -3,7 +3,7 @@
 #' @description Subset an incoming MAF to desired regions.
 #'
 #' @details This helper function is used to subset an incoming MAF to specific region.
-#' This function was developed to accommodate non-GSC-access users to use plotting functions that, 
+#' This function was developed to accommodate non-GSC-access users to use plotting functions that,
 #' previously internally called GABLR core functions (GSC access required).
 #' Thsi function takes an already loaded MAF (`this_maf`) and subset this based on the regions provided,
 #' either in region format (chrX:1234-5678) withh the `region` parameter.
@@ -15,6 +15,7 @@
 #' @param qstart Query start coordinate of the range you are restricting to.
 #' @param qend Query end coordinate of the range you are restricting to.
 #' @param region Region formatted like chrX:1234-5678 instead of specifying chromosome, start and end separately.
+#' @param streamlined Return Start_Position and Tumor_Smaple_Barcode as the only two MAF columns. Default is FALSE.
 #'
 #' @return A MAF that has been subset to the regions specified.
 #' @export
@@ -29,8 +30,9 @@ handle_ssm_by_region = function(this_maf,
                                 chromosome,
                                 qstart,
                                 qend,
-                                region = ""){
-  
+                                region = "",
+                                streamlined = FALSE){
+
   if(!region == ""){
      region = gsub(",", "", region)
      split_chunks = unlist(strsplit(region, ":"))
@@ -39,7 +41,7 @@ handle_ssm_by_region = function(this_maf,
      qstart = as.numeric(startend[1])
      qend = as.numeric(startend[2])
   }
-  
+
   #ensure that the region is specified according to the projection of incoming maf (chr prefix or not)
   if(all(str_detect(this_maf$Chromosome, "chr"))){
     if(!str_detect(chromosome, "chr")){
@@ -53,6 +55,11 @@ handle_ssm_by_region = function(this_maf,
 
   #subset MAF to region
   muts_region = dplyr::filter(this_maf, Chromosome == chromosome & Start_Position > qstart & Start_Position < qend)
-  
+
+  if (streamlined) {
+    muts_region <- muts_region %>%
+        dplyr::select(Start_Position, Tumor_Sample_Barcode)
+  }
+
   return(muts_region)
 }

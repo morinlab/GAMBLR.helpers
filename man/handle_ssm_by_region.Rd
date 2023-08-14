@@ -4,7 +4,14 @@
 \alias{handle_ssm_by_region}
 \title{Handle SSM by Region}
 \usage{
-handle_ssm_by_region(this_maf, chromosome, qstart, qend, region = "")
+handle_ssm_by_region(
+  this_maf,
+  chromosome,
+  qstart,
+  qend,
+  region = "",
+  streamlined = FALSE
+)
 }
 \arguments{
 \item{this_maf}{An already loaded MAF or MAF-like object to subset to regions of interest. This is a required paremter.}
@@ -16,6 +23,8 @@ handle_ssm_by_region(this_maf, chromosome, qstart, qend, region = "")
 \item{qend}{Query end coordinate of the range you are restricting to.}
 
 \item{region}{Region formatted like chrX:1234-5678 instead of specifying chromosome, start and end separately.}
+
+\item{streamlined}{Return Start_Position and Tumor_Smaple_Barcode as the only two MAF columns. Default is FALSE.}
 }
 \value{
 A MAF that has been subset to the regions specified.
@@ -25,7 +34,7 @@ Subset an incoming MAF to desired regions.
 }
 \details{
 This helper function is used to subset an incoming MAF to specific region.
-This function was developed to accommodate non-GSC-access users to use plotting functions that, 
+This function was developed to accommodate non-GSC-access users to use plotting functions that,
 previously internally called GABLR core functions (GSC access required).
 Thsi function takes an already loaded MAF (`this_maf`) and subset this based on the regions provided,
 either in region format (chrX:1234-5678) withh the `region` parameter.
