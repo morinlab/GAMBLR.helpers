@@ -2,6 +2,8 @@
 #'
 #' @description Get the available CN states in the incoming data frame.
 #'
+#' @details For sub-setting copy number information based on segments available in cn data
+#'
 #' @param cn_segments DF with copy number segments, usually retrieved from get_sample_cn_segments.
 #' @param include_2 Optional parameter for including or omit CN state == 2. Default is FALSE.
 #' @param samplen Numeric value that annotates the sample order.
