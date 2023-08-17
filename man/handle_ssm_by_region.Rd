@@ -36,10 +36,10 @@ Subset an incoming MAF to desired regions.
 This helper function is used to subset an incoming MAF to specific region.
 This function was developed to accommodate non-GSC-access users to use plotting functions that,
 previously internally called GABLR core functions (GSC access required).
-Thsi function takes an already loaded MAF (`this_maf`) and subset this based on the regions provided,
-either in region format (chrX:1234-5678) withh the `region` parameter.
+Thsi function takes an already loaded MAF (\code{this_maf}) and subset this based on the regions provided,
+either in region format (chrX:1234-5678) withh the \code{region} parameter.
 Or, the suer can seperatly specify the regions of interest using the following parameters;
-`chromosome`, `qstart`, and, `qend`.
+\code{chromosome}, \code{qstart}, and, \code{qend}.
 }
 \examples{
 my_maf = GAMBLR.data::sample_data$grch37$maf
