@@ -14,6 +14,7 @@ Imports:
     data.table,
     dplyr,
     GAMBLR.data,
+    GAMBLR.viz,
     glue,
     lubridate,
     philentropy,
@@ -26,6 +27,7 @@ Imports:
     utils,
     workflowr
 Remotes:
-    morinlab/GAMBLR.data
+    morinlab/GAMBLR.data,
+    morinlab/GAMBLR.viz
 Encoding: UTF-8
 RoxygenNote: 7.2.3
