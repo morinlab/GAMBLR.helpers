@@ -16,6 +16,7 @@ Imports:
     GAMBLR.data,
     GAMBLR.viz,
     glue,
+    ggsci,
     lubridate,
     philentropy,
     readr,
