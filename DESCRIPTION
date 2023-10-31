@@ -11,22 +11,17 @@ Depends:
     R (>= 4.1)
 Imports:
     config,
-    data.table,
     dplyr,
     GAMBLR.data,
     ggplot2,
     ggsci,
     ggthemes,
-    glue,
-    lubridate,
     philentropy,
     readr,
     reshape2,
-    ssh,
     stringr,
     tibble,
     tidyr,
-    utils,
     workflowr
 Remotes:
     morinlab/GAMBLR.data
