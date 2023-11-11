@@ -8,6 +8,7 @@
 #'
 #' @param maf_df Data frame with maf data. Required parameter. The minimal required columns are Tumor_Sample_Barcode, Hugo_Symbol, Variant_Classification, Start_Position, and End_Position.
 #' @param genes List of genes to return in the resulting matrix. When not provided, matrix is generated for each gene present in the input maf data.
+#' @param add_missing When list of genes is provided and some of the specified genes are not mutated in the provided maf data, they will still be added to the matrix with 0% mutation frequency. Default TRUE.
 #'
 #' @return matrix
 #'
@@ -21,7 +22,8 @@
 #'
 create_onco_matrix = function(
     maf_df,
-    genes
+    genes,
+    add_missing = TRUE
 ){
     if(missing(maf_df)){
         stop(
@@ -75,6 +77,37 @@ create_onco_matrix = function(
         tibble::column_to_rownames("Hugo_Symbol") %>%
         replace(is.na(.), "") %>%
         as.matrix
+
+    if(!missing(genes) & add_missing){
+        missing_genes <- setdiff(
+            genes,
+            rownames(onco_matrix)
+        )
+        if (length(missing_genes) == 0){
+            message("There are no missing genes during onco matrix assembly.")
+        } else {
+            message(
+                paste0(
+                    "Adding ",
+                    length(missing_genes),
+                    " gene(s) with 0% mut frequency during onco matrix assembly."
+                )
+            )
+            missing_matrix <- matrix(
+                    data = rep("", ncol(onco_matrix)*length(missing_genes)),
+                    nrow = length(missing_genes),
+                    ncol = ncol(onco_matrix),
+                    byrow = FALSE,
+                    dimnames = list(missing_genes, colnames(onco_matrix))
+                )
+
+            onco_matrix <- rbind(
+                onco_matrix,
+                missing_matrix
+            )
+        }
+    }
+
 
     return(onco_matrix)
 }
