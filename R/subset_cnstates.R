@@ -13,8 +13,8 @@
 #' @noRd
 #'
 #' @examples
-#' cn_states = get_sample_cn_segments(these_sample_ids = c("00-15201_tumorA",
-#'                                                         "HTMCP-01-06-00422-01A-01D"),
+#' cn_states = get_sample_cn_segments(these_sample_ids = c("02-13135T",
+#'                                                         "SU-DHL-4"),
 #'                                    streamlined = FALSE)
 #'
 #' subset_cnstates(cn_segments = cn_states,
