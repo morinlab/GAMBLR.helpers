@@ -29,15 +29,21 @@
 #' @export
 #'
 #' @examples
-#' maf_1 <- get_ssm_by_sample(these_sample_id = "DOHH-2") %>%
-#'     dplyr::filter(Chromosome == "1")
+#' maf_1 <- get_ssm_by_sample(these_sample_id = "DOHH-2")
 #'
-#' maf_2 <- get_ssm_by_sample(these_sample_id = "SU-DHL-4") %>%
-#'     dplyr::filter(Chromosome == "1")
+#' maf_2 <- get_ssm_by_sample(these_sample_id = "SU-DHL-4")
 #'
+#' # No overlaps are expected between independent samples so this will return
+#' # empty data frame
 #' matched_maf <- fuzzy_match_mafs(
 #'     maf1 = maf_1,
 #'     maf2 = maf_2
+#' )
+#'
+#' # To test functionality, we can supply same data frame to both arguments
+#' matched_maf <- fuzzy_match_mafs(
+#'     maf1 = maf_1,
+#'     maf2 = maf_1
 #' )
 #'
 fuzzy_match_mafs <- function(
