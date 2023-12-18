@@ -53,7 +53,7 @@ maf_2 <- get_ssm_by_sample(these_sample_id = "SU-DHL-4") \%>\%
     dplyr::filter(Chromosome == "1")
 
 matched_maf <- fuzzy_match_mafs(
-    maf1 = maf_1, 
+    maf1 = maf_1,
     maf2 = maf_2
 )
 

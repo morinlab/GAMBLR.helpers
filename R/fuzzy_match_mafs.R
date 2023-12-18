@@ -23,21 +23,20 @@
 #' @param invert Set to TRUE if you ony want the rows of maf1 that could not be
 #'      matched to maf2. Default is FALSE.
 #'
-#' @return data frame 
+#' @return data frame
 #'
-#' @rawNamespace import(data.table, except = c("last", "first", "between", "transpose"))
 #' @import dplyr tidyr tibble
 #' @export
 #'
 #' @examples
 #' maf_1 <- get_ssm_by_sample(these_sample_id = "DOHH-2") %>%
 #'     dplyr::filter(Chromosome == "1")
-#' 
+#'
 #' maf_2 <- get_ssm_by_sample(these_sample_id = "SU-DHL-4") %>%
 #'     dplyr::filter(Chromosome == "1")
-#' 
+#'
 #' matched_maf <- fuzzy_match_mafs(
-#'     maf1 = maf_1, 
+#'     maf1 = maf_1,
 #'     maf2 = maf_2
 #' )
 #'
@@ -48,9 +47,9 @@ fuzzy_match_mafs <- function(
     matching_only = FALSE,
     invert = FALSE
 ){
-    maf1_dt <- maf1 %>%
-        as.data.table()
-    maf2_dt <- maf2 %>%
+    maf1 <- maf1 %>%
+        as.data.frame()
+    maf2 <- maf2 %>%
         dplyr::select(
             Tumor_Sample_Barcode,
             Chromosome,
@@ -63,10 +62,10 @@ fuzzy_match_mafs <- function(
             Start_Position = Start_Position - padding,
             End_Position = End_Position + padding
         ) %>%
-        as.data.table()
+        as.data.frame()
 
-    maf1_dt <- dplyr::mutate(
-        maf1_dt,
+    maf1 <- dplyr::mutate(
+        maf1,
         maf1_ID = paste(
             Tumor_Sample_Barcode,
             Chromosome,
@@ -78,8 +77,8 @@ fuzzy_match_mafs <- function(
         )
     )
 
-    maf2_dt <- dplyr::mutate(
-        maf2_dt,
+    maf2 <- dplyr::mutate(
+        maf2,
         maf2_ID = paste(
             Tumor_Sample_Barcode,
             Chromosome,
@@ -92,42 +91,40 @@ fuzzy_match_mafs <- function(
     )
 
     # naive matching: overlap within Start_Position - End_Position
-    setkey(
-        maf1_dt, Chromosome, Tumor_Sample_Barcode, Start_Position, End_Position
+    columns_to_overlap = c(
+        "Chromosome",
+        "Tumor_Sample_Barcode",
+        "Start_Position",
+        "End_Position"
     )
-    setkey(
-        maf2_dt, Chromosome, Tumor_Sample_Barcode, Start_Position, End_Position
-    )
-    matched_dt <- foverlaps(
-        maf1_dt,
-        maf2_dt,
+    matched <- cool_overlaps(
+        data1 = maf1,
+        data2 = maf2,
+        columns1 = columns_to_overlap,
+        columns2 = columns_to_overlap,
         type = "any"
     ) %>%
-        unique()
-
-    matched_df <- as.data.frame(matched_dt)
+        unique() %>%
+        as.data.frame()
 
     if(matching_only) {
-        matched_df <- dplyr::filter(matched_df, !is.na(maf2_ID))
+        matched <- dplyr::filter(matched, !is.na(maf2_ID))
     } else if(invert) {
-        matched_df <- dplyr::filter(matched_df, is.na(maf2_ID))
+        matched <- dplyr::filter(matched, is.na(maf2_ID))
     }
 
-    matched_df <- dplyr::select(
-        matched_df,
-        -Start_Position,
-        -End_Position,
-        -Reference_Allele,
-        -Tumor_Seq_Allele2
+    matched <- dplyr::select(
+        matched,
+        -contains(".y")
     ) %>%
     dplyr::rename(
         c(
-            "Start_Position" = "i.Start_Position",
-            "Tumor_Seq_Allele2" = "i.Tumor_Seq_Allele2",
-            "Reference_Allele" = "i.Reference_Allele",
-            "End_Position" = "i.End_Position"
+            "Start_Position" = "Start_Position.x",
+            "Tumor_Seq_Allele2" = "Tumor_Seq_Allele2.x",
+            "Reference_Allele" = "Reference_Allele.x",
+            "End_Position" = "End_Position.x"
         )
     )
 
-    return(matched_df)
+    return(matched)
 }
