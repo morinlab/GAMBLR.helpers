@@ -12,7 +12,6 @@ Depends:
 Imports:
     config,
     dplyr,
-    data.table,
     GAMBLR.data,
     ggplot2,
     ggsci,
