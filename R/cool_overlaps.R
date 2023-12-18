@@ -19,7 +19,9 @@
 #' The generated output of this function will contain the overlapping regions
 #' and all columns present in the data frame data1, as well as any columns from
 #' the data frame wupplied with data2 argument, except for those columns present
-#' in data2 that are used for overlap.
+#' in data2 that are used for overlap. When the same columns are present in both
+#' data1 and data2, the output data frame will have ".x" and ".y" suffixes to
+#' indicate whichoriginal input data they are coming from.
 #'
 #' @param data1 Data frame with data to overlap. Required parameter. The minimal
 #'      required columns are those supplied with the argument columns1. Will
@@ -37,9 +39,35 @@
 #' @return data frame
 #'
 #' @examples
-#' library(GAMBLR.data)
-#' maf <- get_coding_ssm()
-#' onco_matrix <- create_onco_matrix(maf_df = maf)
+#' # obtain maf data
+#' maf1 <- get_coding_ssm(
+#'     these_sample_ids = "DOHH-2"
+#' )
+#'
+#' maf2 <- get_coding_ssm(
+#'     these_sample_ids = "SU-DHL-4"
+#' )
+#'
+#' # The same mutations are not expected to be present in different samples
+#' # so this overlap will produce 0 matching rows
+#' overlap <- cool_overlaps(
+#'     maf1,
+#'     maf1
+#' )
+#'
+#' # To demonstrate functionality we can supply the same maf to the data2
+#' overlap <- cool_overlaps(
+#'     maf1,
+#'     maf1 %>% head
+#' )
+#'
+#' # We can also overlap different formats, for example
+#' seg1 <- get_sample_cn_segments(these_sample_ids = "DOHH-2")
+#' overlap <- cool_overlaps(
+#'     data1 = maf1,
+#'     data2 = seg1,
+#'     columns2 = c("chrom", "start", "end")
+#' )
 #'
 #' @import dplyr
 #' @export
@@ -70,8 +98,25 @@ cool_overlaps <- function(
     end1 <- columns1[grepl("end", columns1, ignore.case = TRUE)]
 
     # What is the name of the column in columns1 that specifies start and end?
-    start2 <- columns1[grepl("start", columns2, ignore.case = TRUE)]
-    end2 <- columns1[grepl("end", columns2, ignore.case = TRUE)]
+    start2 <- columns2[grepl("start", columns2, ignore.case = TRUE)]
+    end2 <- columns2[grepl("end", columns2, ignore.case = TRUE)]
+
+    # What are the other columns to be used in overlap?
+    columns1 <- columns1[!columns1 %in% c(start1, end1)]
+    columns2 <- columns2[!columns2 %in% c(start2, end2)]
+
+    # When the same columns are provided they will become .x and .y
+    if(start1 == start2) {
+        start1 <- paste0(start1, ".x")
+        start2 <- paste0(start2, ".y")
+
+    }
+    if(end1 == end2) {
+        end1 <- paste0(end1, ".x")
+        end2 <- paste0(end2, ".y")
+
+    }
+
 
     # Prepare for overlap
     overlap <- dplyr::inner_join(
@@ -88,7 +133,8 @@ cool_overlaps <- function(
         )
         overlap <- overlap %>%
             dplyr::filter(
-               !!sym(start2) <= !!sym(end1)
+                !!sym(start2) >= !!sym(start1) & !!sym(end2) <= !!sym(end1) |
+                !!sym(start1) >= !!sym(start2) & !!sym(end1) <= !!sym(end2)
             )
     } else if (type == "start"){
         message(
@@ -112,7 +158,8 @@ cool_overlaps <- function(
         )
         overlap <- overlap %>%
             dplyr::filter(
-               (!!sym(start1) >= !!sym(start2)) & (!!sym(end1) <= !!sym(end2))
+               (!!sym(start1) >= !!sym(start2)) & (!!sym(end1) <= !!sym(end2)) |
+               (!!sym(start2) >= !!sym(start1)) & (!!sym(end2) <= !!sym(end1))
             )
     } else if (type == "equal"){
         message(
