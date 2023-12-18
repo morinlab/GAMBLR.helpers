@@ -1,3 +1,49 @@
+#' @title Cool overlap of data frames.
+#'
+#' @description This function implements overlap of 2 data frames that contain
+#' regions of coordinates similar to what data.table::foverlaps does. Unlike
+#' foverlaps, this function takes as input data frame class objects, and relies
+#' on dplyr solution rather than data.table handling, therefore allowing usage
+#' of data frames with virtually unlimited dimensions without crashing. This
+#' implementation uses same logic of different types of overlaps as the original
+#' foverlaps solution (any, start, end, within, equal). The type any is default
+#' and allows for any overlapping solution between 2 regions. The type start
+#' only considers regions with exact same start position as overlap; similarly
+#' type end considers regions overlapped when the end positions are exact
+#' matches. Type within means that regions are overlapped when one is contained
+#' in another and neither start nor end positions match. Finally, type equal
+#' only considers overlap when both start and end positions match for both
+#' regions. For any type, the presence of any additional column not directly
+#' specifying regions (for example, Chromosome) will serve similar to a grouping
+#' variable.
+#' The generated output of this function will contain the overlapping regions
+#' and all columns present in the data frame data1, as well as any columns from
+#' the data frame wupplied with data2 argument, except for those columns present
+#' in data2 that are used for overlap.
+#'
+#' @param data1 Data frame with data to overlap. Required parameter. The minimal
+#'      required columns are those supplied with the argument columns1. Will
+#'      dictate the naming of the columns used for overlap in the output.
+#' @param data2 Data frame with data to overlap. Required parameter. The minimal
+#'      required columns are those supplied with the argument columns2.
+#' @param columns1 The list of columns from data frame data1 to be used to find
+#'      overlapping regions.
+#' @param columns2 The list of columns from data frame data2 to be used to find
+#'      overlapping regions.
+#' @param type Character specifying the way to find overlaps. Accepted values
+#'      are any (used as default), start, end, within, and equal. Please see
+#'      function description for more details of different types.
+#'
+#' @return data frame
+#'
+#' @examples
+#' library(GAMBLR.data)
+#' maf <- get_coding_ssm()
+#' onco_matrix <- create_onco_matrix(maf_df = maf)
+#'
+#' @import dplyr
+#' @export
+#'
 cool_overlaps <- function(
     data1,
     data2,
