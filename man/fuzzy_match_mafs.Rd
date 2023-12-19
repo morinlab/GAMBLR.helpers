@@ -46,9 +46,13 @@ maf1. The values in maf2_ID are derived from maf2 and are NA for any rows
 that could not be matched to maf2.
 }
 \examples{
-maf_1 <- get_ssm_by_sample(these_sample_id = "DOHH-2")
+maf1 <- get_coding_ssm(
+    these_sample_ids = "DOHH-2"
+)
 
-maf_2 <- get_ssm_by_sample(these_sample_id = "SU-DHL-4")
+maf2 <- get_coding_ssm(
+    these_sample_ids = "SU-DHL-4"
+)
 
 # No overlaps are expected between independent samples so this will return
 # empty data frame

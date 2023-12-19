@@ -29,9 +29,13 @@
 #' @export
 #'
 #' @examples
-#' maf_1 <- get_ssm_by_sample(these_sample_id = "DOHH-2")
+#' maf1 <- get_coding_ssm(
+#'     these_sample_ids = "DOHH-2"
+#' )
 #'
-#' maf_2 <- get_ssm_by_sample(these_sample_id = "SU-DHL-4")
+#' maf2 <- get_coding_ssm(
+#'     these_sample_ids = "SU-DHL-4"
+#' )
 #'
 #' # No overlaps are expected between independent samples so this will return
 #' # empty data frame
