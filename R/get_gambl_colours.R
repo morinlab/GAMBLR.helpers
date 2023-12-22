@@ -35,18 +35,18 @@ get_gambl_colours = function(classification = "all",
                              as_dataframe = FALSE,
                              return_available = FALSE,
                              verbose = FALSE){
-  
+
   all_colours = list()
   everything = c()
   blood_cols = ggsci::get_ash("blood")
-  
+
   all_colours[["seq_type"]] = c("mrna" = "#E41A1C",
                                 "genome" = "#377EB8",
                                 "capture" = "#4DAF4A")
-  
-  all_colours[["type"]] = c("gain" = "blue",
-                            "loss" = "red")
-  
+
+  all_colours[["type"]] = c("gain" = "#0000FF",
+                            "loss" = "#FF0000")
+
   all_colours[["hmrn"]] = c("BCL2-MYC" = "#52000F",
                             "BCL2" = "#721F0F",
                             "SOCS1/SGK1" = "#D66B1F",
@@ -55,12 +55,12 @@ get_gambl_colours = function(classification = "all",
                             "NOTCH2" = "#7F3293",
                             "NOTCH1" = "#55B55E",
                             "Other" = "#ACADAF")
-  
+
   all_colours[["EBV"]] =  c("EBV-positive" = "#7F055F",
                             "EBV-negative" = "#E5A4CB",
                             "POS" = "#7F055F",
                             "NEG" = "#E5A4CB")
-  
+
   all_colours[["BL"]] = c("Q53-BL" = "#A6CEE3",
                           "M53-BL" = "#A6CEE3", #added because genetic subgroup still refers to it this way
                           "DLBCL-A" = "#721F0F",
@@ -68,9 +68,9 @@ get_gambl_colours = function(classification = "all",
                           "DGG-BL" = "#E90C8B",
                           "DLBCL-B" = "#FB9A99",
                           "DLBCL-C" = "#C41230")
-  
+
   all_colours[["FL"]] = c(dFL = "#99C1B9", cFL = "#D16666", DLBCL = "#479450")
-  
+
   all_colours[["lymphgenerator"]] = c("MP3"="#5B8565",
                                       "EGB" = "#98622A",
                                       "ETB"="#813F3D",
@@ -82,7 +82,7 @@ get_gambl_colours = function(classification = "all",
                                       "ST2"="#C41230",
                                       "UNCLASS"="#05631E"
   )
-  
+
   all_colours[["chapuy_classifier"]] = c(
     C0 = "#bebebe",
     C1 = "#803D99",
@@ -91,9 +91,9 @@ get_gambl_colours = function(classification = "all",
     C4 = "#50BFAD",
     C5 = "#DE292A"
   )
-  
+
   all_colours[["lacy_classifier"]] = all_colours[["hmrn"]]
-  
+
   all_colours[["lymphgen"]] = c("EZB-MYC" = "#52000F",
                                 "EZB" = "#721F0F",
                                 "EZB-COMP" = "#C7371A",
@@ -108,7 +108,7 @@ get_gambl_colours = function(classification = "all",
                                 "A53" = "#5b6d8a",
                                 "Other" = "#ACADAF",
                                 "COMPOSITE" = "#ACADAF")
-  
+
   #all_colours[["coding_class"]] = c("Frame_Shift_Del","Frame_Shift_Ins",
   #                 "In_Frame_Del","In_Frame_Ins",
   #                 "Missense_Mutation","Nonsense_Mutation",
@@ -129,18 +129,18 @@ get_gambl_colours = function(classification = "all",
       "Splice_Region" = unname(blood_cols["Orange"]),
       "3'UTR" = unname(blood_cols["Yellow"]),
       "Silent" = "#A020F0")
-  
+
   all_colours[["rainfall"]] =
     c(
       "C>A" = "#2196F3FF",
       "C>G" = "#3F51B5FF",
       "C>T" = "#F44336FF",
-      "InDel" = "purple",
+      "InDel" = "#A020F0",
       "T>A" = "#4CAF50FF",
       "T>C" = "#FFC107FF",
       "T>G" = "#FF9800FF"
     )
-  
+
   all_colours[["pos_neg"]]=c(
     "POS"="#c41230",
     "NEG"="#E88873",
@@ -153,7 +153,7 @@ get_gambl_colours = function(classification = "all",
     "positive"="#c41230",
     "negative"="#E88873",
     "fail"="#bdbdc1")
-  
+
   all_colours[["copy_number"]]=c(
     "nLOH"="#E026D7",
     "14"="#380015",
@@ -244,7 +244,7 @@ get_gambl_colours = function(classification = "all",
                               "Kridel"= "#4686B7", "Kridel, 2016"= "#4686B7",
                               "ICGC"="#E09C3B","ICGC, 2018"="#E09C3B",
                               "Grande"="#e90c8b", "Grande, 2019"="#e90c8b")
-  
+
   all_colours[["indels"]] = c("DEL" = "#53B1FC", "INS" = "#FC9C6D")
   all_colours[["svs"]] = c("DEL" = "#53B1FC", "DUP" = "#FC9C6D")
   all_colours[["genetic_subgroup"]] = c(all_colours[["lymphgen"]],all_colours[["BL"]],all_colours[["FL"]])
