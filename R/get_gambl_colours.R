@@ -248,7 +248,7 @@ get_gambl_colours = function(classification = "all",
   all_colours[["pathology"]] = c(
     "B-ALL"="#C1C64B",
     "CLL"="#889BE5",
-    "MCL"="#F37A20",
+    "MCL"="#40E0D0",
     "BL"="#926CAD",
     "mBL"="#34C7F4",
     "tFL"="#FF8595",

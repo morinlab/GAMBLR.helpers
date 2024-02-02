@@ -14,7 +14,6 @@ Imports:
     dplyr,
     GAMBLR.data,
     ggplot2,
-    ggsci,
     ggthemes,
     philentropy,
     readr,
