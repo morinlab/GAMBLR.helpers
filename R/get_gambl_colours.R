@@ -18,16 +18,12 @@
 #'
 #' @return A named vector of colour codes for lymphgen classes and pathology.
 #'
-#' @import dplyr ggsci stringr tidyr
+#' @import dplyr stringr tidyr
 #' @export
 #'
 #' @examples
 #' lymphgen_cols = get_gambl_colours("lymphgen")
 #'
-#' \dontrun{
-#' #be sure to install ggsci from https://github.com/morinlab/ggsci
-#' #install_github("morinlab/ggsci")
-#' }
 #'
 get_gambl_colours = function(classification = "all",
                              alpha = 1,
@@ -38,7 +34,21 @@ get_gambl_colours = function(classification = "all",
 
   all_colours = list()
   everything = c()
-  blood_cols = ggsci::get_ash("blood")
+  
+  blood_cols = c(   Red   ="#c41230",
+                    Blue ="#115284", 
+                    Green =  "#39b54b",
+                    Purple  =  "#5c266c",
+                    Orange  = "#fe9003",
+                    Green ="#046852",
+                    Lavendar = "#8781bd",
+                    "Steel Blue" =  "#455564",
+                    "Light Blue" = "#2cace3",
+                    Magenta = "#e90c8b",
+                    LimeGreen = "#a4bb87",
+                    Brown = "#5f3a17",
+                    Gray = "#bdbdc1",
+                    Yellow = "#f9bd1f" )
 
   all_colours[["seq_type"]] = c("mrna" = "#E41A1C",
                                 "genome" = "#377EB8",
@@ -109,11 +119,7 @@ get_gambl_colours = function(classification = "all",
                                 "Other" = "#ACADAF",
                                 "COMPOSITE" = "#ACADAF")
 
-  #all_colours[["coding_class"]] = c("Frame_Shift_Del","Frame_Shift_Ins",
-  #                 "In_Frame_Del","In_Frame_Ins",
-  #                 "Missense_Mutation","Nonsense_Mutation",
-  #                 "Nonstop_Mutation","Splice_Region","Splice_Site",
-  #                 "Targeted_Region","Translation_Start_Site")
+  
   all_colours[["mutation"]]=
     c(
       "Nonsense_Mutation"=unname(blood_cols["Red"]),
@@ -188,11 +194,61 @@ get_gambl_colours = function(classification = "all",
     "F"="#EF476F",
     "Female"="#EF476F",
     "female"="#EF476F")
-  all_colours[["clinical"]]=ggsci::get_ash("clinical")
+  
+  all_colours[["clinical"]]= 
+    c(
+      "M"="#118AB2",
+      "Male"="#118AB2",
+      "F"="#EF476F",
+      "Female"="#EF476F",
+      "EBV-positive"="#7F055F",
+      "EBV-negative"="#E5A4CB",
+      "POS"="#c41230",
+      "NEG"="#E88873",
+      "FAIL"="#bdbdc1",
+      "Alive"="#046852",
+      "alive"="#046852",
+      "dead"="#a4bb87",
+      "Dead"="#a4bb87",
+      "deceased"="#a4bb87",
+      "unknown"="#C3C9E9",
+      "IPI_0"= "#3B9AB2",
+      "IPI_1"= "#78B7C5",
+      "IPI_2" = "#EBCC2A",
+      "IPI_3" = "#E1AF00",
+      "IPI_4" = "#F21A00",
+      "Adult" = "#DCE0E5",
+      "adult" = "#DCE0E5",
+      "Pediatric" = "#677A8E",
+      "pediatric" = "#677A8E",
+      "Diagnosis"="#E57A44",
+      "A"="#E57A44",
+      "B"="#721817",
+      "C"="#721817",
+      "D"="#721817",
+      "E"="#721817",
+      "Progression"="#A44A3F",
+      "Relapse"="#721817",
+      "I"="#75F4F4",
+      "FOLL1"="#75F4F4",
+      "II"="#90E0F3",
+      "FOLL2"="#90E0F3",
+      "IIIA"="#B8B3E9",
+      "FOLL3A"="#B8B3E9",
+      "IIIB"="#D999B9",
+      "FOLL3B"="#D999B9",
+      "matched"="#F0B67F",
+      "unmatched"="#D6D1B1",
+      "FF"="#009FFD",
+      "frozen"="#009FFD",
+      "FFPE"="#95B2B8",
+      "ctDNA"="#7E6148",
+      "NA"="white"
+    )
   all_colours[["pathology"]] = c(
     "B-ALL"="#C1C64B",
     "CLL"="#889BE5",
-    "MCL"="#F37A20",
+    "MCL"="#40E0D0",
     "BL"="#926CAD",
     "mBL"="#34C7F4",
     "tFL"="#FF8595",
