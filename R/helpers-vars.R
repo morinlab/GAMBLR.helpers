@@ -1,5 +1,18 @@
 #' @export
-coding_vc = c("Frame_Shift_Del", "Frame_Shift_Ins", "In_Frame_Del", "In_Frame_Ins", "Missense_Mutation", "Nonsense_Mutation", "Nonstop_Mutation", "Splice_Region", "Splice_Site", "Targeted_Region", "Translation_Start_Site")
+coding_vc = c(
+    "Frame_Shift_Del", "Frame_Shift_Ins", "In_Frame_Del", "In_Frame_Ins",
+    "Missense_Mutation", "Nonsense_Mutation", "Nonstop_Mutation",
+    "Splice_Region", "Splice_Site", "Targeted_Region", "Translation_Start_Site"
+)
+
+#' @export
+vc_nonSynonymous <- c(
+    "Frame_Shift_Del", "Frame_Shift_Ins",
+    "Splice_Site", "Translation_Start_Site",
+    "Nonsense_Mutation", "Nonstop_Mutation",
+    "In_Frame_Del", "In_Frame_Ins",
+    "Missense_Mutation"
+)
 
 #Global variable specifying what metadata columns are absolutely required
 #' @export
