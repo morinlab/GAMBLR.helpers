@@ -50,7 +50,7 @@ calculate_tmb(
     maf1,
     regions_bed = grch37_ashm_regions
 )
-#' calculate_tmb(
+calculate_tmb(
     maf1,
     regions_bed = grch37_ashm_regions,
     subset_to_nonSyn = FALSE
