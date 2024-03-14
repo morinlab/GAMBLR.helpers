@@ -1,3 +1,13 @@
+#' @title Copy not clobber.
+#'
+#' @description TODO.
+#'
+#' @param from_file TODO.
+#' @param to_file TODO.
+#' @param force TODO.
+#'
+#' @return file
+#'
 #' @export
 copy_no_clobber = function(from_file,
                            to_file,

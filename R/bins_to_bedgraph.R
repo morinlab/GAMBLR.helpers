@@ -1,3 +1,13 @@
+#' @title Bins to bed graph.
+#'
+#' @description This function will generate bed file.
+#'
+#' @param bin_df Data frame with bins.
+#' @param min_value Minimum value to retain the bin.
+#' @param filename Path to a local file on drive to save the resulting file.
+#'
+#' @return file
+#'
 #' @export
 bins_to_bedgraph = function(bin_df,min_value = 3,filename = "test.bed"){
   bed_cols = dplyr::select(bin_df,1,2,3,smoothed_ratio)

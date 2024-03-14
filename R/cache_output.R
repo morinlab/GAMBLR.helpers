@@ -1,3 +1,16 @@
+#' @title Cache output.
+#'
+#' @description TODO.
+#'
+#' @param result_df TODO.
+#' @param function_name TODO.
+#' @param clobber_mode TODO.
+#' @param get_existing TODO.
+#' @param function_params TODO.
+#' @param additional_details TODO.
+#'
+#' @return file
+#'
 #' @export
 cache_output = function(result_df,
                         function_name,
