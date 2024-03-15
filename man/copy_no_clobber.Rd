@@ -14,7 +14,7 @@ copy_no_clobber(from_file, to_file, force = FALSE)
 \item{force}{TODO.}
 }
 \value{
-file
+full path to the file that was written
 }
 \description{
 TODO.

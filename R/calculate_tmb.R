@@ -1,4 +1,4 @@
-#' @title Return TMB counts.
+#' @title Calculate tumour mutation burden.
 #'
 #' @description This function implements tumor mutation burden calculation.
 #' TODO: add more details.

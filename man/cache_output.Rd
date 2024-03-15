@@ -28,7 +28,7 @@ cache_output(
 \item{additional_details}{TODO.}
 }
 \value{
-file
+full path to the file that was written
 }
 \description{
 TODO.

@@ -9,7 +9,7 @@
 #' @param function_params TODO.
 #' @param additional_details TODO.
 #'
-#' @return file
+#' @return full path to the file that was written
 #'
 #' @export
 cache_output = function(result_df,
@@ -44,4 +44,5 @@ cache_output = function(result_df,
 
   message(paste("creating/overwriting",cache_file_name))
   write_tsv(result_df,file=cache_file_name)
+  return(cache_file_name)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_tmb.R
 \name{calculate_tmb}
 \alias{calculate_tmb}
-\title{Return TMB counts.}
+\title{Calculate tumour mutation burden.}
 \usage{
 calculate_tmb(
   maf_data,

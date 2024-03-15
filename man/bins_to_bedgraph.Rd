@@ -14,7 +14,7 @@ bins_to_bedgraph(bin_df, min_value = 3, filename = "test.bed")
 \item{filename}{Path to a local file on drive to save the resulting file.}
 }
 \value{
-file
+full path to the file that was written
 }
 \description{
 This function will generate bed file.
