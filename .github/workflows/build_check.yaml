@@ -30,14 +30,14 @@ jobs:
       uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: r
-        channels: anaconda,conda-forge,defaults
+        channels: conda-forge,defaults
         python-version: 3.11
         auto-activate-base: false
         environment-file: envs/r.yaml
 
     - name: Build package
       run:
-        Rscript -e "devtools::install(repos = BiocManager::repositories())"
+        Rscript -e "devtools::install()"
 
     - name: Check package
       run:
