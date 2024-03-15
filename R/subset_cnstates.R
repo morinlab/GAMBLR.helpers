@@ -10,8 +10,6 @@
 #'
 #' @return Nothing.
 #'
-#' @noRd
-#'
 #' @examples
 #' cn_states = get_sample_cn_segments(these_sample_ids = c("02-13135T",
 #'                                                         "SU-DHL-4"),

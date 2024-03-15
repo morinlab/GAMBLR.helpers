@@ -1,3 +1,12 @@
+#' @title Get template wildcards.
+#'
+#' @description TODO.
+#'
+#' @param parent_key TODO.
+#' @param template_key TODO.
+#'
+#' @return list
+#'
 #' @export
 get_template_wildcards = function(parent_key,
                                   template_key){

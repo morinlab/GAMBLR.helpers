@@ -12,8 +12,6 @@
 #'
 #' @import GAMBLR.data dplyr
 #'
-#' @noRd
-#'
 #' @export
 handle_metadata = function(this_seq_type = "genome") {
     if ("GAMBLR.data" %in% installed.packages()) {

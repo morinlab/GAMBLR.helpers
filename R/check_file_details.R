@@ -1,3 +1,13 @@
+#' @title Check file details
+#'
+#' @description When relative path to a file is given, this function will
+#' automatically generate it's full path using the project_base config value
+#' and check for existence of the file at the full path. Can operate on vector
+#' of several relative paths.
+#'
+#' @param relative_paths Vector of relative paths.
+#' @return Boolean
+#'
 #' @export
 check_file_details = function(relative_paths){
   not_found = c()

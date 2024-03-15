@@ -1,3 +1,16 @@
+#' @title Cache output.
+#'
+#' @description TODO.
+#'
+#' @param result_df TODO.
+#' @param function_name TODO.
+#' @param clobber_mode TODO.
+#' @param get_existing TODO.
+#' @param function_params TODO.
+#' @param additional_details TODO.
+#'
+#' @return full path to the file that was written
+#'
 #' @export
 cache_output = function(result_df,
                         function_name,
@@ -31,4 +44,5 @@ cache_output = function(result_df,
 
   message(paste("creating/overwriting",cache_file_name))
   write_tsv(result_df,file=cache_file_name)
+  return(cache_file_name)
 }

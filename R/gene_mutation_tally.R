@@ -1,3 +1,22 @@
+#' @title Tally coding mutations load.
+#'
+#' @description Calculate the number of coding mutations per grouping. Silent
+#' variants are excluded from this calculation. The incoming maf may contain
+#' non-coding variants, which will be excluded from tallying.
+#'
+#' @param maf_df Data frame of simple somatic mutations in maf format. Required
+#'      parameter.
+#' @param these_samples_metadata Data frame with metadata. Must contain sample
+#'      identifiers in the `sample_id` column and column that will be used
+#'      to calulate the mutation load. All other columns are ignored. Required
+#'      parameter.
+#' @param these_genes Vector of hugo symbols for genes to be considered for the
+#'      tallying of mutations. Required parameter.
+#' @param grouping_variable Column in the metadata that will be used as grouping
+#'      variable. By default, the `cohort` is used.
+#'
+#' @return data frame
+#'
 #' @export
 gene_mutation_tally = function(maf_df,these_samples_metadata,these_genes,grouping_variable="cohort"){
   meta = dplyr::select(these_samples_metadata,sample_id,{{grouping_variable}})

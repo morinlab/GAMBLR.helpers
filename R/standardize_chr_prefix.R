@@ -1,6 +1,7 @@
 #' @title Standardize Chromosome Prefix.
 #'
-#' @description Standardize the chr prefix in a vector of chromosome names based on projection.
+#' @description Standardize the chr prefix in a vector of chromosome names based
+#' on projection.
 #'
 #' @details INTERNAL FUNCTION, not meant for out-of-package use.
 #'
@@ -9,7 +10,6 @@
 #'
 #' @return A vector of chromosome names with prefix standardized to projection
 #'
-#' @noRd
 #'
 #' @examples
 #' these_chrs = c(8, "13", "chr4", "chrY")
@@ -24,7 +24,8 @@ standardize_chr_prefix = function(incoming_vector,
   if (projection %in% c("grch37", "grch38")) {
     output_vector = gsub("chr", "", incoming_vector)
   } else {
-    output_vector = gsub("chr", "", incoming_vector) # if there is a mix of prefixed and non-prefixed options
+    # if there is a mix of prefixed and non-prefixed options
+    output_vector = gsub("chr", "", incoming_vector)
     output_vector = paste0("chr", output_vector)
   }
   return(output_vector)

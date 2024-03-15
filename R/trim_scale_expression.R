@@ -1,14 +1,14 @@
 #' @title Trim Scale Expressions.
 #'
-#' @description INTERNAL HELPER FUNCTION called by prettyOncoplot, not meant for out-of-package usage.
+#' @description INTERNAL HELPER FUNCTION called by prettyOncoplot, not meant for
+#' out-of-package usage.
 #'
-#' @details INTERNAL FUNCTION called by prettyOncoplot, not meant for out-of-package usage.
+#' @details INTERNAL FUNCTION called by prettyOncoplot, not meant for
+#' out-of-package usage.
 #'
 #' @param x Numeric value (of expression) to be trimmed.
 #'
 #' @return Numeric value.
-#'
-#' @noRd
 #'
 #' @examples
 #' trimmed = trim_scale_expression(2)

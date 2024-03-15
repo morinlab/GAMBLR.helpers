@@ -4,7 +4,6 @@
 ## usethis namespace: start
 #' @importFrom dplyr left_join
 #' @importFrom philentropy KL
-#' @importFrom reshape2 melt
 #' @importFrom stats end
 #' @importFrom stats quantile
 #' @importFrom stats start

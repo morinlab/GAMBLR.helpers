@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_tmb.R
 \name{calculate_tmb}
 \alias{calculate_tmb}
-\title{Return TMB counts.}
+\title{Calculate tumour mutation burden.}
 \usage{
 calculate_tmb(
   maf_data,
@@ -50,7 +50,7 @@ calculate_tmb(
     maf1,
     regions_bed = grch37_ashm_regions
 )
-#' calculate_tmb(
+calculate_tmb(
     maf1,
     regions_bed = grch37_ashm_regions,
     subset_to_nonSyn = FALSE

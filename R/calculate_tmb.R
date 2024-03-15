@@ -1,4 +1,4 @@
-#' @title Return TMB counts.
+#' @title Calculate tumour mutation burden.
 #'
 #' @description This function implements tumor mutation burden calculation.
 #' TODO: add more details.
@@ -31,7 +31,7 @@
 #'     maf1,
 #'     regions_bed = grch37_ashm_regions
 #' )
-#' #' calculate_tmb(
+#' calculate_tmb(
 #'     maf1,
 #'     regions_bed = grch37_ashm_regions,
 #'     subset_to_nonSyn = FALSE

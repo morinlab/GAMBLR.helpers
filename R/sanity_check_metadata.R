@@ -8,7 +8,6 @@
 #'
 #' @import tibble readr dplyr
 #'
-#' @noRd
 #'
 #' @examples
 #' sane_meta_data = sanity_check_metadata()
