@@ -1,8 +1,6 @@
 name: GAMBLR.helpers build check
 
 on:
-  push:
-    branches: [kdreval-helpers-setup]
   pull_request:
     branches: [master]
 
