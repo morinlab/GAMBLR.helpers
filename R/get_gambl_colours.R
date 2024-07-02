@@ -34,9 +34,9 @@ get_gambl_colours = function(classification = "all",
 
   all_colours = list()
   everything = c()
-  
+
   blood_cols = c(   Red   ="#c41230",
-                    Blue ="#115284", 
+                    Blue ="#115284",
                     Green =  "#39b54b",
                     Purple  =  "#5c266c",
                     Orange  = "#fe9003",
@@ -119,10 +119,10 @@ get_gambl_colours = function(classification = "all",
                                 "Other" = "#ACADAF",
                                 "COMPOSITE" = "#ACADAF")
 
-  
+
   all_colours[["mutation"]]=
     c(
-      "Nonsense_Mutation"=unname(blood_cols["Red"]),
+      "Nonsense_Mutation"="#D8A7CA",
       "Missense_Mutation"=unname(blood_cols["Green"]),
       "Multi_Hit"=unname(blood_cols["Steel Blue"]),
       "Frame_Shift_Ins" = unname(blood_cols["Magenta"]),
@@ -194,8 +194,8 @@ get_gambl_colours = function(classification = "all",
     "F"="#EF476F",
     "Female"="#EF476F",
     "female"="#EF476F")
-  
-  all_colours[["clinical"]]= 
+
+  all_colours[["clinical"]]=
     c(
       "M"="#118AB2",
       "Male"="#118AB2",
