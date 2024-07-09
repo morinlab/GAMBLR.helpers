@@ -37,7 +37,7 @@
 #'     subset_to_nonSyn = FALSE
 #' )
 #'
-#' @import dplyr
+#' @import dplyr GAMBLR.data
 #' @export
 #'
 calculate_tmb <- function(
@@ -105,7 +105,7 @@ calculate_tmb <- function(
         # Expect bed format but be flexible about column names
         columns <- colnames(regions_bed)[1:3]
 
-        overlap <- GAMBLR.helpers::cool_overlaps(
+        overlap <- GAMBLR.data::cool_overlaps(
             data1 = maf_data,
             data2 = regions_bed,
             columns2 = columns
