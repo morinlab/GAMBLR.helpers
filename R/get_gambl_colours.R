@@ -79,7 +79,8 @@ get_gambl_colours = function(classification = "all",
                           "DLBCL-B" = "#FB9A99",
                           "DLBCL-C" = "#C41230")
 
-  all_colours[["FL"]] = c(dFL = "#99C1B9", cFL = "#D16666", DLBCL = "#479450")
+  all_colours[["FL"]] = c(dFL = "#99C1B9", cFL = "#D16666", DLBCL = "#479450",
+                          "MEM-like"="#FFB61F", "GC-like"= "#008AEC")
 
   all_colours[["lymphgenerator"]] = c("MP3"="#5B8565",
                                       "EGB" = "#98622A",
@@ -269,6 +270,7 @@ get_gambl_colours = function(classification = "all",
     "PBL" = "#E058C0",
     "Plasmablastic" = "#E058C0",
     "CNS" = "#E2EF60",
+    "cHL"="#C1C15C",
     "THRLBCL" = "#A5F2B3",
     "MM"="#CC9A42",
     "SCBC"="#8c9c90",
