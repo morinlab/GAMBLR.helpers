@@ -77,7 +77,9 @@ get_gambl_colours = function(classification = "all",
                           "IC-BL" = "#45425A",
                           "DGG-BL" = "#E90C8B",
                           "DLBCL-B" = "#FB9A99",
-                          "DLBCL-C" = "#C41230")
+                          "DLBCL-C" = "#C41230",
+                          "DLBCLesque" = "#721F0F",
+                          "DLBCL-like" = "#721F0F")
 
   all_colours[["FL"]] = c(dFL = "#99C1B9", cFL = "#D16666", DLBCL = "#479450")
 
@@ -158,6 +160,8 @@ get_gambl_colours = function(classification = "all",
     "FAIL"="#bdbdc1",
     "positive"="#c41230",
     "negative"="#E88873",
+    "1"="#c41230",
+    "0"="#E8887366",
     "fail"="#bdbdc1")
 
   all_colours[["copy_number"]]=c(
