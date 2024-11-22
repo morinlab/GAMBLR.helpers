@@ -3,7 +3,6 @@
 
 ## usethis namespace: start
 #' @importFrom dplyr left_join
-#' @importFrom philentropy KL
 #' @importFrom stats end
 #' @importFrom stats quantile
 #' @importFrom stats start

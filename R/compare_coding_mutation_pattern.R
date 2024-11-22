@@ -17,9 +17,9 @@ compare_coding_mutation_pattern = function(maf_df1,maf_df2,gene){
     stop("Must provide the Hugo_Symbol of a single gene that is present in both maf files")
   }
   missense_positions1 = dplyr::filter(maf_df1,Hugo_Symbol==gene,!Variant_Classification %in% c("Silent","Splice_Site","Splice_Region"),Variant_Type=="SNP") %>%
-    pull(HGVSp_Short) %>% str_remove_all("p.\\w") %>% str_extract("\\d+") %>% as.numeric()
+    pull(HGVSp_Short) %>% gsub("p\\.\\w", "", .) %>% regmatches(., regexpr("\\d+", .)) %>% as.numeric()
   missense_positions2 = dplyr::filter(maf_df2,Hugo_Symbol==gene,!Variant_Classification %in% c("Silent","Splice_Site","Splice_Region"),Variant_Type=="SNP") %>%
-    pull(HGVSp_Short) %>% str_remove_all("p.\\w") %>% str_extract("\\d+") %>% as.numeric()
+    pull(HGVSp_Short) %>% gsub("p\\.\\w", "", .) %>% regmatches(., regexpr("\\d+", .)) %>% as.numeric()
  if(length(missense_positions1)==0 | length(missense_positions2)==0 ){
    message(paste("no mutations for",gene,"in one or both data sets"))
    return(list(kl=15))
@@ -35,6 +35,12 @@ compare_coding_mutation_pattern = function(maf_df1,maf_df2,gene){
   all_counts = dplyr::select(full_df,-position) %>% t()
   all_counts[1,]=all_counts[1,]/sum(all_counts[1,])
   all_counts[2,]=all_counts[2,]/sum(all_counts[2,])
-  kl_out = KL(all_counts)
+
+  # Normalize the rows to turn counts into probabilities
+  P <- all_counts[1, ] / sum(all_counts[1, ])
+  Q <- all_counts[2, ] / sum(all_counts[2, ])
+
+  kl_out <- kl_divergence(P, Q)
+
   return(list(df=full_df,kl=unname(kl_out)))
 }
