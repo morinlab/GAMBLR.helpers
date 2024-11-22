@@ -18,7 +18,7 @@
 #'
 #' @return A named vector of colour codes for lymphgen classes and pathology.
 #'
-#' @import dplyr stringr tidyr
+#' @import dplyr tidyr
 #' @export
 #'
 #' @examples
@@ -318,7 +318,7 @@ get_gambl_colours = function(classification = "all",
     everything = c(everything, all_colours[[this_group]])
   }
   #return matching value from lowercase version of the argument if it exists
-  lc_class = stringr::str_to_lower(classification)
+  lc_class = tolower(classification)
   if(return_available){
     return(names(all_colours))
   }

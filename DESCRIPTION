@@ -17,7 +17,6 @@ Imports:
     ggthemes,
     philentropy,
     readr,
-    stringr,
     tibble,
     tidyr,
     workflowr
