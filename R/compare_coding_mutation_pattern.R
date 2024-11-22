@@ -8,6 +8,7 @@
 #'
 #' @return list
 #'
+#' @import dplyr
 #' @export
 compare_coding_mutation_pattern = function(maf_df1,maf_df2,gene){
   if(missing(maf_df1) | missing(maf_df2)){

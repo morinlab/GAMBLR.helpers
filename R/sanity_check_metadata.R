@@ -6,7 +6,7 @@
 #'
 #' @return A table.
 #'
-#' @import tibble readr dplyr
+#' @import tibble readr dplyr tidyr
 #'
 #'
 #' @examples
