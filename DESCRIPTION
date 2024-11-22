@@ -17,8 +17,7 @@ Imports:
     ggthemes,
     readr,
     tibble,
-    tidyr,
-    workflowr
+    tidyr
 Remotes:
     morinlab/GAMBLR.data
 Encoding: UTF-8
