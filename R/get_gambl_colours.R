@@ -35,20 +35,22 @@ get_gambl_colours = function(classification = "all",
   all_colours = list()
   everything = c()
 
-  blood_cols = c(   Red   ="#c41230",
-                    Blue ="#115284",
-                    Green =  "#39b54b",
-                    Purple  =  "#5c266c",
-                    Orange  = "#fe9003",
-                    Green ="#046852",
+  blood_cols <- c(
+    Red = "#c41230",
+    Blue = "#115284",
+    "Light Green" = "#39b54b",
+    Purple = "#5c266c",
+    Orange = "#fe9003",
+    Green = "#046852",
                     Lavendar = "#8781bd",
-                    "Steel Blue" =  "#455564",
+    "Steel Blue" = "#455564",
                     "Light Blue" = "#2cace3",
                     Magenta = "#e90c8b",
                     LimeGreen = "#a4bb87",
                     Brown = "#5f3a17",
                     Gray = "#bdbdc1",
-                    Yellow = "#f9bd1f" )
+    Yellow = "#f9bd1f"
+  )
 
   all_colours[["seq_type"]] = c("mrna" = "#E41A1C",
                                 "genome" = "#377EB8",
