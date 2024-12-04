@@ -38,10 +38,6 @@ create_onco_matrix = function(
             )
     }
 
-    onco_matrix_coding <- coding_class[
-        !coding_class %in% c("Silent", "Splice_Region", "Targeted_Region")
-    ]
-
 
     onco_matrix <- maf_df %>%
         dplyr::distinct(
@@ -52,10 +48,7 @@ create_onco_matrix = function(
         dplyr::select(
             Tumor_Sample_Barcode, Hugo_Symbol, Variant_Classification
         ) %>%
-        dplyr::filter(
-            Variant_Classification %in% onco_matrix_coding
-        ) %>%
-        dplyr::group_by(
+                dplyr::group_by(
             Hugo_Symbol, Tumor_Sample_Barcode
         ) %>%
         dplyr::mutate(
