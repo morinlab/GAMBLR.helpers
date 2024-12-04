@@ -122,11 +122,11 @@ get_gambl_colours = function(classification = "all",
                                 "COMPOSITE" = "#ACADAF")
 
 
-  all_colours[["mutation"]]=
+  all_colours[["mutation"]] <-
     c(
-      "Nonsense_Mutation"="#D8A7CA",
-      "Missense_Mutation"=unname(blood_cols["Green"]),
-      "Multi_Hit"=unname(blood_cols["Steel Blue"]),
+      "Nonsense_Mutation" = unname(blood_cols["Red"]),
+      "Missense_Mutation" = unname(blood_cols["Light Green"]),
+      "Multi_Hit" = unname(blood_cols["Steel Blue"]),
       "Frame_Shift_Ins" = unname(blood_cols["Magenta"]),
       "Frame_Shift_Del" = unname(blood_cols["Magenta"]),
       "In_Frame_Ins" = unname(blood_cols["Brown"]),
@@ -136,7 +136,9 @@ get_gambl_colours = function(classification = "all",
       "Splice_Site" = unname(blood_cols["Orange"]),
       "Splice_Region" = unname(blood_cols["Orange"]),
       "3'UTR" = unname(blood_cols["Yellow"]),
-      "Silent" = "#A020F0")
+      "5'UTR" = unname(blood_cols["LimeGreen"]),
+      "Silent" = "#D8A7CA"
+    )
 
   all_colours[["rainfall"]] =
     c(
