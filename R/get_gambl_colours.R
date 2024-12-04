@@ -35,20 +35,22 @@ get_gambl_colours = function(classification = "all",
   all_colours = list()
   everything = c()
 
-  blood_cols = c(   Red   ="#c41230",
-                    Blue ="#115284",
-                    Green =  "#39b54b",
-                    Purple  =  "#5c266c",
-                    Orange  = "#fe9003",
-                    Green ="#046852",
+  blood_cols <- c(
+    Red = "#c41230",
+    Blue = "#115284",
+    "Light Green" = "#39b54b",
+    Purple = "#5c266c",
+    Orange = "#fe9003",
+    Green = "#046852",
                     Lavendar = "#8781bd",
-                    "Steel Blue" =  "#455564",
+    "Steel Blue" = "#455564",
                     "Light Blue" = "#2cace3",
                     Magenta = "#e90c8b",
                     LimeGreen = "#a4bb87",
                     Brown = "#5f3a17",
                     Gray = "#bdbdc1",
-                    Yellow = "#f9bd1f" )
+    Yellow = "#f9bd1f"
+  )
 
   all_colours[["seq_type"]] = c("mrna" = "#E41A1C",
                                 "genome" = "#377EB8",
@@ -120,11 +122,11 @@ get_gambl_colours = function(classification = "all",
                                 "COMPOSITE" = "#ACADAF")
 
 
-  all_colours[["mutation"]]=
+  all_colours[["mutation"]] <-
     c(
-      "Nonsense_Mutation"="#D8A7CA",
-      "Missense_Mutation"=unname(blood_cols["Green"]),
-      "Multi_Hit"=unname(blood_cols["Steel Blue"]),
+      "Nonsense_Mutation" = unname(blood_cols["Red"]),
+      "Missense_Mutation" = unname(blood_cols["Light Green"]),
+      "Multi_Hit" = unname(blood_cols["Steel Blue"]),
       "Frame_Shift_Ins" = unname(blood_cols["Magenta"]),
       "Frame_Shift_Del" = unname(blood_cols["Magenta"]),
       "In_Frame_Ins" = unname(blood_cols["Brown"]),
@@ -134,7 +136,9 @@ get_gambl_colours = function(classification = "all",
       "Splice_Site" = unname(blood_cols["Orange"]),
       "Splice_Region" = unname(blood_cols["Orange"]),
       "3'UTR" = unname(blood_cols["Yellow"]),
-      "Silent" = "#A020F0")
+      "5'UTR" = unname(blood_cols["LimeGreen"]),
+      "Silent" = "#D8A7CA"
+    )
 
   all_colours[["rainfall"]] =
     c(
@@ -179,10 +183,10 @@ get_gambl_colours = function(classification = "all",
     "1"="#92C5DE",
     "0"="#4393C3"
   )
-  all_colours[["blood"]] = c(
-    "Red" = "#c41230", "Blue"="#115284","Green" = "#39b54b",
-    "Purple" = "#5c266c", "Orange"="#fe9003","Green" = "#046852",
-    "Lavendar" = "#8781bd", "Steel Blue"= "#455564",
+  all_colours[["blood"]] <- c(
+    "Red" = "#c41230", "Blue" = "#115284", "Light Green" = "#39b54b",
+    "Purple" = "#5c266c", "Orange" = "#fe9003", "Green" = "#046852",
+    "Lavendar" = "#8781bd", "Steel Blue" = "#455564",
     "Light Blue" = "#2cace3", "Magenta" = "#e90c8b", "Mustard" = "#b76d29",
     "LimeGreen" = "#a4bb87", "Brown" = "#5f3a17", "Gray" = "#bdbdc1",
     "Yellow" = "#f9bd1f"

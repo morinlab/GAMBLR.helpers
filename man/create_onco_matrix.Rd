@@ -4,7 +4,7 @@
 \alias{create_onco_matrix}
 \title{Create onco matrix from maf data.}
 \usage{
-create_onco_matrix(maf_df, genes, add_missing = TRUE)
+create_onco_matrix(maf_df, genes, add_missing = TRUE, subset_to_coding = FALSE)
 }
 \arguments{
 \item{maf_df}{Data frame with maf data. Required parameter. The minimal required columns are Tumor_Sample_Barcode, Hugo_Symbol, Variant_Classification, Start_Position, and End_Position.}
@@ -12,6 +12,8 @@ create_onco_matrix(maf_df, genes, add_missing = TRUE)
 \item{genes}{List of genes to return in the resulting matrix. When not provided, matrix is generated for each gene present in the input maf data.}
 
 \item{add_missing}{When list of genes is provided and some of the specified genes are not mutated in the provided maf data, they will still be added to the matrix with 0\% mutation frequency. Default TRUE.}
+
+\item{subset_to_coding}{Will conditionally subset to only coding variants. Default is FALSE (no subsetting).}
 }
 \value{
 matrix
