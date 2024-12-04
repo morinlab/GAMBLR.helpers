@@ -183,10 +183,10 @@ get_gambl_colours = function(classification = "all",
     "1"="#92C5DE",
     "0"="#4393C3"
   )
-  all_colours[["blood"]] = c(
-    "Red" = "#c41230", "Blue"="#115284","Green" = "#39b54b",
-    "Purple" = "#5c266c", "Orange"="#fe9003","Green" = "#046852",
-    "Lavendar" = "#8781bd", "Steel Blue"= "#455564",
+  all_colours[["blood"]] <- c(
+    "Red" = "#c41230", "Blue" = "#115284", "Light Green" = "#39b54b",
+    "Purple" = "#5c266c", "Orange" = "#fe9003", "Green" = "#046852",
+    "Lavendar" = "#8781bd", "Steel Blue" = "#455564",
     "Light Blue" = "#2cace3", "Magenta" = "#e90c8b", "Mustard" = "#b76d29",
     "LimeGreen" = "#a4bb87", "Brown" = "#5f3a17", "Gray" = "#bdbdc1",
     "Yellow" = "#f9bd1f"
