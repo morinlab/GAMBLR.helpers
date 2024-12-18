@@ -49,7 +49,8 @@ get_gambl_colours = function(classification = "all",
                     LimeGreen = "#a4bb87",
                     Brown = "#5f3a17",
                     Gray = "#bdbdc1",
-    Yellow = "#f9bd1f"
+    Yellow = "#f9bd1f",
+    Mustard = "#b76d29"
   )
 
   all_colours[["seq_type"]] = c("mrna" = "#E41A1C",
