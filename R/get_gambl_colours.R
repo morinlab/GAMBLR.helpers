@@ -15,6 +15,7 @@
 #' @param as_dataframe Boolean parameter controlling the format of the return. Default is FALSE.
 #' @param return_available Set to TRUE for returning all available colours. Default is FALSE.
 #' @param verbose Default is FALSE
+#' @param as_rgb_string Set to TRUE if you want RGB triples instead of hex codes (e.g. "#555FAB" will instead be "85,95,171")
 #'
 #' @return A named vector of colour codes for lymphgen classes and pathology.
 #'
@@ -30,10 +31,37 @@ get_gambl_colours = function(classification = "all",
                              as_list = FALSE,
                              as_dataframe = FALSE,
                              return_available = FALSE,
-                             verbose = FALSE){
+                             verbose = FALSE,
+                             as_rgb_string=FALSE){
 
   all_colours = list()
   everything = c()
+
+  #Same as the colours used in IGV
+  all_colours[["chromosome"]] = 
+               c("chr1"="#555FAB",
+                "chr2"="#CE3D31",
+                "chr3"="#749B58",
+                "chr4"="#F0E584",
+                "chr5"="#476A85",
+                "chr6"="#BA6338",
+                "chr7"="#5CB1DD",
+                "chr8"="#7F2368",
+                "chr9"="#77C269",
+                "chr10"="#D595A6",
+                "chr11"="#934823",
+                "chr12"="#857B8E",
+                "chr13"="#C85328",
+                "chr14"="#D58F5B",
+                "chr15"="#7A65A7",
+                "chr16"="#E3AF69",
+                "chr17"="#3C1C54",
+                "chr18"="#CEDEB7",
+                "chr19"="#612B79",
+                "chr20"="#AF2064",
+                "chr21"="#E6C66F",
+                "chr22"="#5B665D",
+                "chrX"="#CA992C")
   
   blood_cols = c(   Red   ="#c41230",
                     Blue ="#115284", 
@@ -77,7 +105,9 @@ get_gambl_colours = function(classification = "all",
                           "IC-BL" = "#45425A",
                           "DGG-BL" = "#E90C8B",
                           "DLBCL-B" = "#FB9A99",
-                          "DLBCL-C" = "#C41230")
+                          "DLBCL-C" = "#C41230",
+                          "DLBCLesque" = "#721F0F",
+                          "DLBCL-like" = "#721F0F")
 
   all_colours[["FL"]] = c(dFL = "#99C1B9", cFL = "#D16666", DLBCL = "#479450",
                           "MEM-like"="#FFB61F", "GC-like"= "#008AEC")
@@ -159,6 +189,8 @@ get_gambl_colours = function(classification = "all",
     "FAIL"="#bdbdc1",
     "positive"="#c41230",
     "negative"="#E88873",
+    "1"="#c41230",
+    "0"="#E8887366",
     "fail"="#bdbdc1")
 
   all_colours[["copy_number"]]=c(
@@ -326,6 +358,15 @@ get_gambl_colours = function(classification = "all",
       alpha_cols = rgb(raw_cols_rgb[1L, ], raw_cols_rgb[2L, ], raw_cols_rgb[3L, ], alpha = alpha * 255L, names = names(raw_cols), maxColorValue = 255L)
       names(alpha_cols) = names(raw_cols)
       all_colours[[colslot]] = alpha_cols
+    }
+  }
+  if(as_rgb_string){
+    for(colslot in names(all_colours)){
+      raw_cols = all_colours[[colslot]]
+      raw_cols_rgb = col2rgb(raw_cols)
+      col_string = paste(raw_cols_rgb[1L, ], raw_cols_rgb[2L, ], raw_cols_rgb[3L, ],sep=",")
+      names(col_string) = names(raw_cols)
+      all_colours[[colslot]] = col_string
     }
   }
   for(this_group in names(all_colours)){
