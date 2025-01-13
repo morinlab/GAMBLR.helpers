@@ -180,6 +180,18 @@ get_gambl_colours = function(classification = "all",
     "1"="#92C5DE",
     "0"="#4393C3"
   )
+  
+  all_colours[["aneuploidy"]]=c(
+    "iso-pq_lossgain"="#E208D7",
+    "iso-qp_lossgain"="#E563D7",
+    "arm-p_gain"="#6B641F",
+    "chrom_gain"="#6C331F",
+    "arm-q_gain"="#6A504D",
+    "chrom_loss"="#4693C3",
+    "arm-p_loss"="#93B6DE",
+    "arm-q_loss"="#90E0DE"
+  )
+  
   all_colours[["blood"]] = c(
     "Red" = "#c41230", "Blue"="#115284","Green" = "#39b54b",
     "Purple" = "#5c266c", "Orange"="#fe9003","Green" = "#046852",
