@@ -44,7 +44,6 @@ To do so, refer to the Boolean arguments; \code{as_list} and \code{as_dataframe}
 For more information regarding the available colours, refer to the utilities vignette.
 }
 \examples{
-lymphgen_cols = get_gambl_colours("lymphgen")
-
+lymphgen_cols <- get_gambl_colours("lymphgen")
 
 }

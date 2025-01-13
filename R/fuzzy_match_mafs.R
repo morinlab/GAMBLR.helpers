@@ -25,7 +25,7 @@
 #'
 #' @return data frame
 #'
-#' @import dplyr tidyr tibble
+#' @import dplyr tidyr tibble GAMBLR.data
 #' @export
 #'
 #' @examples
@@ -107,7 +107,7 @@ fuzzy_match_mafs <- function(
         "Start_Position",
         "End_Position"
     )
-    matched <- cool_overlaps(
+    matched <- GAMBLR.data::cool_overlaps(
         data1 = maf1,
         data2 = maf2,
         columns1 = columns_to_overlap,

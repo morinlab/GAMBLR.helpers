@@ -9,6 +9,7 @@
 #' @param maf_df Data frame with maf data. Required parameter. The minimal required columns are Tumor_Sample_Barcode, Hugo_Symbol, Variant_Classification, Start_Position, and End_Position.
 #' @param genes List of genes to return in the resulting matrix. When not provided, matrix is generated for each gene present in the input maf data.
 #' @param add_missing When list of genes is provided and some of the specified genes are not mutated in the provided maf data, they will still be added to the matrix with 0% mutation frequency. Default TRUE.
+#' @param subset_to_coding Will conditionally subset to only coding variants. Default is FALSE (no subsetting).
 #'
 #' @return matrix
 #'
@@ -23,7 +24,8 @@
 create_onco_matrix = function(
     maf_df,
     genes,
-    add_missing = TRUE
+    add_missing = TRUE,
+    subset_to_coding = FALSE
 ){
     if(missing(maf_df)){
         stop(
@@ -38,10 +40,15 @@ create_onco_matrix = function(
             )
     }
 
-    onco_matrix_coding <- coding_class[
-        !coding_class %in% c("Silent", "Splice_Region", "Targeted_Region")
-    ]
-
+    if(subset_to_coding){
+        onco_matrix_coding <- coding_class[
+            !coding_class %in% c("Silent", "Splice_Region", "Targeted_Region")
+        ]
+        maf_df <- maf_df %>%
+            dplyr::filter(
+                Variant_Classification %in% onco_matrix_coding
+            )
+    }
 
     onco_matrix <- maf_df %>%
         dplyr::distinct(
@@ -51,9 +58,6 @@ create_onco_matrix = function(
         ) %>%
         dplyr::select(
             Tumor_Sample_Barcode, Hugo_Symbol, Variant_Classification
-        ) %>%
-        dplyr::filter(
-            Variant_Classification %in% onco_matrix_coding
         ) %>%
         dplyr::group_by(
             Hugo_Symbol, Tumor_Sample_Barcode

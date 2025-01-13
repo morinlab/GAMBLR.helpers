@@ -9,8 +9,8 @@ cache_output(
   function_name,
   clobber_mode = F,
   get_existing = F,
-  function_params = list(region = "chr3:98300000-198022430", bin_size = 2000, seq_type
-    = "genome"),
+  function_params = list(region = "chr3:98300000-198022430", bin_size = 2000, seq_type =
+    "genome"),
   additional_details = list(foreground = "DLBCL_FL_BL", background = "CLL_MM_MCL")
 )
 }
