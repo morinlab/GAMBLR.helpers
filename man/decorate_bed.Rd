@@ -6,7 +6,6 @@
 \usage{
 decorate_bed(
   bed_df,
-  is_bedpe = FALSE,
   colour_by = "CHROM_B",
   colour_mapping,
   new_column_name = "color"
@@ -14,8 +13,6 @@ decorate_bed(
 }
 \arguments{
 \item{bed_df}{A bed or bedpe data frame}
-
-\item{is_bedpe}{Set to FALSE if the input is a in the basic bed format rather than bedpe (default TRUE)}
 
 \item{colour_by}{Specify the name of the column used to define the colours}
 
@@ -33,7 +30,6 @@ Decorate a bed or bedpe file
 
 in_bed = get_combined_sv()
 coloured_bed = decorate_bed(in_bed,
-                            is_bedpe=T,
                             colour_mapping = get_gambl_colours("chromosome",
                                                               as_rgb_string = T))
 }

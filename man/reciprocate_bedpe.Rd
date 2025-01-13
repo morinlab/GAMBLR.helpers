@@ -7,7 +7,7 @@
 reciprocate_bedpe(bed_df, shift_by = 30)
 }
 \arguments{
-\item{bed_df}{}
+\item{bed_df}{A bed or bedpe data frame (e.g. containing SVs from SVAR or Manta)}
 
 \item{shift_by}{The positions of START_A and END_A will be increased by this value (default 30). When combining this with decorate_bed, this offset ensures IGV shows the intended colour instead of the colour of the reciprocal event.}
 }
@@ -22,7 +22,6 @@ Add reciprocal events to a bedpe file
 
 recip_bed = reciprocate_bedpe(in_bed)
 coloured_bed = decorate_bed(recip_bed,
-                            is_bedpe=T,
                             colour_mapping = get_gambl_colours("chromosome",
                                                                 as_rgb_string = T))
                             

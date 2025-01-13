@@ -1,8 +1,8 @@
 #' Add reciprocal events to a bedpe file
 #'
-#' @param bed_df 
+#' @param bed_df A bed or bedpe data frame (e.g. containing SVs from SVAR or Manta)
 #' @param shift_by The positions of START_A and END_A will be increased by this value (default 30). When combining this with decorate_bed, this offset ensures IGV shows the intended colour instead of the colour of the reciprocal event.
-
+#' 
 #' @return data frame with each row duplicated and the contents of CHROM_A, START_A etc swapped with CHROM_B, START_B
 #' @export
 #'
@@ -11,7 +11,6 @@
 #' 
 #' recip_bed = reciprocate_bedpe(in_bed)
 #' coloured_bed = decorate_bed(recip_bed,
-#'                             is_bedpe=T,
 #'                             colour_mapping = get_gambl_colours("chromosome",
 #'                                                                 as_rgb_string = T))
 #'                             
@@ -31,7 +30,6 @@ reciprocate_bedpe = function(bed_df,shift_by=30){
 #' Decorate a bed or bedpe file
 #'
 #' @param bed_df A bed or bedpe data frame
-#' @param is_bedpe Set to FALSE if the input is a in the basic bed format rather than bedpe (default TRUE)
 #' @param colour_by Specify the name of the column used to define the colours
 #' @param colour_mapping Named vector specifying the colour for each possible value in the colour_by column 
 #' @param new_column_name The name to use for the colour column (default is 'color' for IGV compatability)
@@ -43,11 +41,9 @@ reciprocate_bedpe = function(bed_df,shift_by=30){
 #' 
 #' in_bed = get_combined_sv()
 #' coloured_bed = decorate_bed(in_bed,
-#'                             is_bedpe=T,
 #'                             colour_mapping = get_gambl_colours("chromosome",
 #'                                                               as_rgb_string = T))
 decorate_bed = function(bed_df,
-                        is_bedpe=FALSE,
                         colour_by="CHROM_B",
                         colour_mapping,
                         new_column_name="color"){
