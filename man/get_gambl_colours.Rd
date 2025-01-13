@@ -10,7 +10,8 @@ get_gambl_colours(
   as_list = FALSE,
   as_dataframe = FALSE,
   return_available = FALSE,
-  verbose = FALSE
+  verbose = FALSE,
+  as_rgb_string = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ get_gambl_colours(
 \item{return_available}{Set to TRUE for returning all available colours. Default is FALSE.}
 
 \item{verbose}{Default is FALSE}
+
+\item{as_rgb_string}{Set to TRUE if you want RGB triples instead of hex codes (e.g. "#555FAB" will instead be "85,95,171")}
 }
 \value{
 A named vector of colour codes for lymphgen classes and pathology.
@@ -41,7 +44,6 @@ To do so, refer to the Boolean arguments; \code{as_list} and \code{as_dataframe}
 For more information regarding the available colours, refer to the utilities vignette.
 }
 \examples{
-lymphgen_cols = get_gambl_colours("lymphgen")
-
+lymphgen_cols <- get_gambl_colours("lymphgen")
 
 }
