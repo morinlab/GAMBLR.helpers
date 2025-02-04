@@ -36,7 +36,7 @@ get_gambl_colours <- function(classification = "all",
   everything <- c()
 
   #Same as the colours used in IGV
-  all_colours[["chromosome"]] = 
+  all_colours[["chromosome"]] =
                c("chr1"="#555FAB",
                 "chr2"="#CE3D31",
                 "chr3"="#749B58",
@@ -283,7 +283,7 @@ get_gambl_colours <- function(classification = "all",
     "1" = "#92C5DE",
     "0" = "#4393C3"
   )
-  
+
   all_colours[["aneuploidy"]]=c(
     "iso-pq_lossgain"="#E208D7",
     "iso-qp_lossgain"="#E563D7",
@@ -294,7 +294,7 @@ get_gambl_colours <- function(classification = "all",
     "arm-p_loss"="#93B6DE",
     "arm-q_loss"="#90E0DE"
   )
-  
+
   all_colours[["blood"]] <- c(
     "Red" = "#c41230", "Blue" = "#115284", "Light Green" = "#39b54b",
     "Purple" = "#5c266c", "Orange" = "#fe9003", "Green" = "#046852",
@@ -424,6 +424,17 @@ get_gambl_colours <- function(classification = "all",
   all_colours[["indels"]] <- c("DEL" = "#53B1FC", "INS" = "#FC9C6D")
   all_colours[["svs"]] <- c("DEL" = "#53B1FC", "DUP" = "#FC9C6D")
   all_colours[["genetic_subgroup"]] <- c(all_colours[["lymphgen"]], all_colours[["BL"]], all_colours[["FL"]])
+  all_colours[["domains"]] <- c(
+    "#F7FBFF", "#DEEBF7", "#C6DBEF", "#9ECAE1", "#6BAED6", "#4292C6", "#2171B5",
+    "#084594", "#FFFFCC", "#FFEDA0", "#FED976", "#FEB24C", "#FD8D3C", "#FC4E2A",
+    "#E31A1C", "#B10026", "#91003F", "#CE1256", "#E7298A", "#DF65B0", "#C994C7",
+    "#D4B9DA", "#E7E1EF", "#F7F4F9"
+  )
+  names(all_colours[["domains"]]) <- paste0(
+    "domain",
+    1:length(all_colours[["domains"]])
+  )
+
   # print(all_colours)
   if (alpha < 1) {
     for (colslot in names(all_colours)) {
@@ -434,7 +445,7 @@ get_gambl_colours <- function(classification = "all",
       all_colours[[colslot]] <- alpha_cols
     }
   }
-  
+
   if(as_rgb_string){
     for(colslot in names(all_colours)){
       raw_cols = all_colours[[colslot]]
