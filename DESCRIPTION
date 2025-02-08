@@ -15,6 +15,7 @@ Imports:
     GAMBLR.data,
     ggplot2,
     ggthemes,
+    magrittr,
     readr,
     tibble,
     tidyr
