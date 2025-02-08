@@ -107,7 +107,7 @@ fuzzy_match_mafs <- function(
         "Start_Position",
         "End_Position"
     )
-    matched <- GAMBLR.data::cool_overlaps(
+    matched <- cool_overlaps(
         data1 = maf1,
         data2 = maf2,
         columns1 = columns_to_overlap,

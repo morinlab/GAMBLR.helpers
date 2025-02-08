@@ -105,7 +105,7 @@ calculate_tmb <- function(
         # Expect bed format but be flexible about column names
         columns <- colnames(regions_bed)[1:3]
 
-        overlap <- GAMBLR.data::cool_overlaps(
+        overlap <- cool_overlaps(
             data1 = maf_data,
             data2 = regions_bed,
             columns2 = columns
