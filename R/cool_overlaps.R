@@ -115,14 +115,14 @@ cool_overlaps <- function(
     # Ensure the columns for start/end are numeric
     data1 <- data1 %>%
         dplyr::mutate(
-            !!start1 := as.numeric(!!rlang::sym(start1)),
-            !!end1 := as.numeric(!!rlang::sym(end1)),
+            !!start1 := as.numeric(!!sym(start1)),
+            !!end1 := as.numeric(!!sym(end1)),
         )
 
     data2 <- data2 %>%
         dplyr::mutate(
-            !!start2 := as.numeric(!!rlang::sym(start2)),
-            !!end2 := as.numeric(!!rlang::sym(end2)),
+            !!start2 := as.numeric(!!sym(start2)),
+            !!end2 := as.numeric(!!sym(end2)),
         )
 
     # When the same columns are provided they will become .x and .y
