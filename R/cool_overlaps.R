@@ -112,6 +112,19 @@ cool_overlaps <- function(
     columns1 <- columns1[!columns1 %in% c(start1, end1)]
     columns2 <- columns2[!columns2 %in% c(start2, end2)]
 
+    # Ensure the columns for start/end are numeric
+    data1 <- data1 %>%
+        dplyr::mutate(
+            !!start1 := as.numeric(!!sym(start1)),
+            !!end1 := as.numeric(!!sym(end1)),
+        )
+
+    data2 <- data2 %>%
+        dplyr::mutate(
+            !!start2 := as.numeric(!!sym(start2)),
+            !!end2 := as.numeric(!!sym(end2)),
+        )
+
     # When the same columns are provided they will become .x and .y
     original_start1 <- start1
     original_end1 <- end1
