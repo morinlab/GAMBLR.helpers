@@ -41,26 +41,30 @@ check_config_value = function(config_key){
 #' check_config_value(config::get("resources")$blacklist$template)
 #'
 #' @export
-check_config_and_value <- function(config_key) {
+check_config_and_value <- function(config_key,config_name) {
   # Check if config.yml is in working directory
   if (file.exists("config.yml")) {
-    config_list <- config::get()
-  } else {
-    # If not, fall back to package-specific config
-    print("config.yml not in working directory")
-    calling_pkg <- get_calling_package()
-    print(paste("function called from:", calling_pkg))
-    if(is.null(calling_pkg)){
-      calling_pkg <- "GAMBLR.results"
+    if(missing(config_name)){
+      config_list <- config::get()  
+    }else{
+      config_list <- config::get(config=config_name)
     }
+  } else {
+    
+    calling_pkg <- "GAMBLR.results"
+
     # Check for package-specific config file
     config_file <- system.file("extdata", "config.yml", package = calling_pkg)
     
     if (file.exists(config_file) && nzchar(config_file)) {
       message("Using package-specific config file: ", config_file)
-      config_list <- config::get(file = config_file)
+      if(missing(config_name)){
+        config_list <- config::get(file = config_file)
+      }else{
+        config_list <- config::get(file = config_file,config=config_name)
+      }
+      
     } else {
-      print(config_file)
       stop("No config.yml found in working directory or package. Check installation and file paths.")
     }
   }
