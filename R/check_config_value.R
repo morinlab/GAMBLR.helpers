@@ -57,7 +57,6 @@ check_config_and_value <- function(config_key,config_name) {
     config_file <- system.file("extdata", "config.yml", package = calling_pkg)
     
     if (file.exists(config_file) && nzchar(config_file)) {
-      message("Using package-specific config file: ", config_file)
       if(missing(config_name)){
         config_list <- config::get(file = config_file)
       }else{
