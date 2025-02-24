@@ -108,7 +108,5 @@ review_hotspots = function(annotated_maf,
                                           ! Variant_Classification %in% truncating_variants,
                                           "TRUE", hot_spot))
   }
-  annotated_maf = create_maf_data(annotated_maf,genome_build)
-
   return(annotated_maf)
 }
