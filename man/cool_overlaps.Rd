@@ -28,8 +28,9 @@ overlapping regions.}
 overlapping regions.}
 
 \item{type}{Character specifying the way to find overlaps. Accepted values
-are "any" (used as default), "start", "end", "within", and "equal".
-Please see function description for more details of different types.}
+are "any" (used as default), "start", "end", "within", "equal", and
+"fuzzy". Please see function description for more details of different
+types.}
 
 \item{nomatch}{Whether the rows from data1 that do not have overlap in data2
 should be returned or not. The default is FALSE (rows without overlap
@@ -52,8 +53,9 @@ type "start" only considers regions with exact same start position as
 overlap; similarly type "end" considers regions overlapped when the end
 positions are exact matches. Type "within" means that regions are overlapped
 when one is contained in another and neither start nor end positions match.
-Finally, type "equal" only considers overlap when both start and end
-positions match for both regions. For any type, the presence of any
+Type "equal" only considers overlap when both start and end positions match
+for both regions. Finally, the type "fuzzy" will overlap regions loosely
+defined by only one overlapping end. For any type, the presence of any
 additional column not directly specifying regions (for example, Chromosome)
 will serve similar to a grouping variable.
 The generated output of this function will contain the overlapping regions
