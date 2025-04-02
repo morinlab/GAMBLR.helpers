@@ -2,7 +2,7 @@
 % Please edit documentation in R/subset_cnstates.R
 \name{subset_cnstates}
 \alias{subset_cnstates}
-\title{Subset CN States.}
+\title{Subset CN States. DEPRECATED}
 \usage{
 subset_cnstates(cn_segments, include_2 = FALSE, samplen)
 }
@@ -14,7 +14,7 @@ subset_cnstates(cn_segments, include_2 = FALSE, samplen)
 \item{samplen}{Numeric value that annotates the sample order.}
 }
 \value{
-Nothing.
+Nothing
 }
 \description{
 Get the available CN states in the incoming data frame.
@@ -23,11 +23,12 @@ Get the available CN states in the incoming data frame.
 For sub-setting copy number information based on segments available in cn data
 }
 \examples{
-cn_states = get_sample_cn_segments(these_sample_ids = c("02-13135T",
-                                                        "SU-DHL-4"),
-                                   streamlined = FALSE)
+\dontrun{
+meta = get_gambl_metadata() \%>\% dplyr::filter(sample_id \%in\% c("02-13135T","SU-DHL-4"))
+cn_states = get_cn_segments(these_samples_metadata=meta)
 
-subset_cnstates(cn_segments = cn_states,
+subsetted = subset_cnstates(cn_segments = cn_states,
                 samplen = 1)
-
+dim(subsetted)
+}
 }

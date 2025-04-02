@@ -21,6 +21,7 @@ INTERNAL FUNCTION called by prettyOncoplot, not meant for
 out-of-package usage.
 }
 \examples{
-trimmed = trim_scale_expression(2)
+trimmed = trim_scale_expression(c(2,4,6,4,4.5))
+trimmed
 
 }

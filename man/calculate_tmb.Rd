@@ -42,18 +42,17 @@ TODO: add more details.
 }
 \examples{
 # obtain maf data
-library(GAMBLR.data)
+library(GAMBLR.open)
 maf1 <- get_ssm_by_samples()
 
-calculate_tmb(maf1)
-calculate_tmb(
+coding_counts = calculate_tmb(maf1)
+
+dplyr::filter(coding_counts,Tumor_Sample_Barcode=="OCI-Ly10")
+
+all_counts = calculate_tmb(
     maf1,
-    regions_bed = grch37_ashm_regions
-)
-calculate_tmb(
-    maf1,
-    regions_bed = grch37_ashm_regions,
     subset_to_nonSyn = FALSE
 )
+dplyr::filter(all_counts,Tumor_Sample_Barcode=="OCI-Ly10")
 
 }

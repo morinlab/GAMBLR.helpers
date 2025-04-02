@@ -3,8 +3,8 @@
 #' @description Check the existence of a specific config key.
 #' The function will notify the user and end the program if no such key exists.
 #'
-#' @details INTERNAL FUNCTION for checking the existence of a config value,
-#' not meant for out-of-package usage.
+#' @details DEPRECATED INTERNAL FUNCTION. All calls to this function should
+#' be replaced by calls to check_config_and_value()
 #'
 #' @param config_key key from config, prefixed with config::get()
 #'
@@ -12,8 +12,9 @@
 #' (if config key is NULL).
 #' 
 #' @examples
+#' \dontrun{
 #' check_config_value(config::get("resources")$blacklist$template)
-#'
+#'}
 #' @export
 check_config_value = function(config_key){
   if(is.null(config_key)){
@@ -38,7 +39,7 @@ check_config_value = function(config_key){
 #' (if config key is NULL or missing).
 #' 
 #' @examples
-#' check_config_value(config::get("resources")$blacklist$template)
+#' check_config_and_value("resources$blacklist$template")
 #'
 #' @export
 check_config_and_value <- function(config_key,config_name) {
