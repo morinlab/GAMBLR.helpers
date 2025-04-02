@@ -27,12 +27,14 @@ data frame with one additional column containing colours for each row
 Decorate a bed or bedpe file
 }
 \examples{
+
+library(GAMBLR.open)
 \dontrun{
-in_bed = get_combined_sv(projection="hg38")
+in_bed = get_manta_sv(projection="hg38")
 # TODO: update decorate_bed to handle non-prefixed chromosome names
 }
 
-in_bed = get_combined_sv(projection="hg38")
+in_bed = get_manta_sv(projection="hg38")
 coloured_bed = decorate_bed(in_bed,
                             colour_mapping = get_gambl_colours("chromosome",
                                                               as_rgb_string = T))
