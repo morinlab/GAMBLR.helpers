@@ -11,8 +11,9 @@
 #' @return Numeric value.
 #'
 #' @examples
-#' trimmed = trim_scale_expression(2)
-#'
+#' trimmed = trim_scale_expression(c(2,4,6,4,4.5))
+#' trimmed
+#' 
 #' @export
 trim_scale_expression = function(x){
   quants = unname(quantile(x, probs = c(0.05, 0.95), na.rm = TRUE))

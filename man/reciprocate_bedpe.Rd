@@ -19,10 +19,10 @@ Add reciprocal events to a bedpe file
 }
 \examples{
 
-
+\dontrun{
 recip_bed = reciprocate_bedpe(in_bed)
 coloured_bed = decorate_bed(recip_bed,
                             colour_mapping = get_gambl_colours("chromosome",
                                                                 as_rgb_string = T))
-                            
+}
 }

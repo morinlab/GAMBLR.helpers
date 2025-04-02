@@ -4,7 +4,7 @@
 \alias{check_config_and_value}
 \title{Check Config and Value.}
 \usage{
-check_config_and_value(config_key)
+check_config_and_value(config_key, config_name)
 }
 \arguments{
 \item{config_key}{A string of one or more nested keys to retrieve
@@ -23,6 +23,6 @@ INTERNAL FUNCTION for checking the existence of a config value,
 not meant for out-of-package usage.
 }
 \examples{
-check_config_value(config::get("resources")$blacklist$template)
+check_config_and_value("resources$blacklist$template")
 
 }

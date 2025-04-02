@@ -8,12 +8,12 @@
 #'
 #' @examples
 #' 
-#' 
+#' \dontrun{
 #' recip_bed = reciprocate_bedpe(in_bed)
 #' coloured_bed = decorate_bed(recip_bed,
 #'                             colour_mapping = get_gambl_colours("chromosome",
 #'                                                                 as_rgb_string = T))
-#'                             
+#'}
 reciprocate_bedpe = function(bed_df,shift_by=30){
   swapped_bed = bed_df
   swapped_bed[,c(1:3)]=bed_df[,c(4:6)]
@@ -38,8 +38,12 @@ reciprocate_bedpe = function(bed_df,shift_by=30){
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' in_bed = get_combined_sv(projection="hg38")
+#' # TODO: update decorate_bed to handle non-prefixed chromosome names
+#' }
 #' 
-#' in_bed = get_combined_sv()
+#' in_bed = get_combined_sv(projection="hg38")
 #' coloured_bed = decorate_bed(in_bed,
 #'                             colour_mapping = get_gambl_colours("chromosome",
 #'                                                               as_rgb_string = T))

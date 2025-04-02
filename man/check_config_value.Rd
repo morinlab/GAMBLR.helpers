@@ -18,10 +18,11 @@ Check the existence of a specific config key.
 The function will notify the user and end the program if no such key exists.
 }
 \details{
-INTERNAL FUNCTION for checking the existence of a config value,
-not meant for out-of-package usage.
+DEPRECATED INTERNAL FUNCTION. All calls to this function should
+be replaced by calls to check_config_and_value()
 }
 \examples{
+\dontrun{
 check_config_value(config::get("resources")$blacklist$template)
-
+}
 }
