@@ -36,8 +36,8 @@ get_gambl_colours <- function(classification = "all",
   everything <- c()
 
   #Same as the colours used in IGV
-  all_colours[["chromosome"]] =
-               c("chr1"="#555FAB",
+  all_colours[["chromosome"]] =c(
+                "chr1"="#555FAB",
                 "chr2"="#CE3D31",
                 "chr3"="#749B58",
                 "chr4"="#F0E584",
@@ -59,7 +59,8 @@ get_gambl_colours <- function(classification = "all",
                 "chr20"="#AF2064",
                 "chr21"="#E6C66F",
                 "chr22"="#5B665D",
-                "chrX"="#CA992C")
+                "chrX"="#CA992C"
+  )
 
   blood_cols <- c(
     Red = "#c41230",
@@ -86,64 +87,8 @@ get_gambl_colours <- function(classification = "all",
   )
 
   all_colours[["type"]] <- c(
-    "gain" = "#0000FF",
-    "loss" = "#FF0000"
-  )
-
-  all_colours[["hmrn"]] <- c(
-    "BCL2-MYC" = "#52000F",
-    "BCL2" = "#721F0F",
-    "SOCS1/SGK1" = "#D66B1F",
-    "TET2/SGK1" = "#C41230",
-    "MYD88" = "#3B5FAC",
-    "NOTCH2" = "#7F3293",
-    "NOTCH1" = "#55B55E",
-    "Other" = "#ACADAF"
-  )
-
-  all_colours[["EBV"]] <- c(
-    "EBV-positive" = "#7F055F",
-    "EBV-negative" = "#E5A4CB",
-    "POS" = "#7F055F",
-    "NEG" = "#E5A4CB"
-  )
-
-  all_colours[["BL"]] <- c(
-    "Q53-BL" = "#A6CEE3",
-    "M53-BL" = "#A6CEE3", # added because genetic subgroup still refers to it this way
-    "DLBCL-A" = "#721F0F",
-    "IC-BL" = "#45425A",
-    "DGG-BL" = "#E90C8B",
-    "DLBCL-B" = "#FB9A99",
-    "DLBCL-C" = "#C41230",
-    "DLBCLesque" = "#721F0F",
-    "DLBCL-like" = "#721F0F")
-
-  all_colours[["FL"]] <- c(dFL = "#99C1B9", cFL = "#D16666", DLBCL = "#479450",
-                          "MEM-like"="#FFB61F", "GC-like"= "#008AEC")
-
-  all_colours[["lymphgenerator"]] <- c(
-    "MP3" = "#5B8565",
-    "EGB" = "#98622A",
-    "ETB" = "#813F3D",
-    "aSCI" = "#D66B1F",
-    "aSEL" = "#6A0D18",
-    "MCaP" = "#5F8CFF",
-    "BNZ" = "#8870B6",
-    "EZB" = "#721F0F",
-    "ST2" = "#C41230",
-    "UNCLASS" = "#05631E"
-  )
-
-  all_colours[["seq_type"]] <- c(
-    "mrna" = "#E41A1C",
-    "genome" = "#377EB8",
-    "capture" = "#4DAF4A"
-  )
-
-  all_colours[["type"]] <- c(
-    "gain" = "#0000FF",
-    "loss" = "#FF0000"
+    "gain" = "#B2182B",
+    "loss" = "#4393C3"
   )
 
   all_colours[["hmrn"]] <- c(
@@ -174,7 +119,11 @@ get_gambl_colours <- function(classification = "all",
     "DLBCL-C" = "#C41230"
   )
 
-  all_colours[["FL"]] <- c(dFL = "#99C1B9", cFL = "#D16666", DLBCL = "#479450")
+  all_colours[["FL"]] <- c(
+    dFL = "#99C1B9", 
+    cFL = "#D16666", 
+    DLBCL = "#479450"
+  )
 
   all_colours[["lymphgenerator"]] <- c(
     "MP3" = "#5B8565",
@@ -217,36 +166,36 @@ get_gambl_colours <- function(classification = "all",
     "COMPOSITE" = "#ACADAF"
   )
 
+  all_colours[["mutation"]] <-c(
+    "Nonsense_Mutation" = unname(blood_cols["Red"]),
+    "Missense_Mutation" = unname(blood_cols["Light Green"]),
+    "Multi_Hit" = unname(blood_cols["Steel Blue"]),
+    "Frame_Shift_Ins" = unname(blood_cols["Magenta"]),
+    "Frame_Shift_Del" = unname(blood_cols["Magenta"]),
+    "In_Frame_Ins" = unname(blood_cols["Brown"]),
+    "In_Frame_Del" = unname(blood_cols["Brown"]),
+    "Nonstop_Mutation" = unname(blood_cols["Light Blue"]),
+    "Translation_Start_Site" = unname(blood_cols["Lavendar"]),
+    "Splice_Site" = unname(blood_cols["Orange"]),
+    "Splice_Region" = unname(blood_cols["Orange"]),
+    "3'UTR" = unname(blood_cols["Yellow"]),
+    "3'Flank" = "#FBEC5D",
+    "5'UTR" = unname(blood_cols["LimeGreen"]),
+    "5'Flank" = "#4b5c34",
+    "Intron" = unname(blood_cols["Mustard"]),
+    "Silent" = "#D8A7CA",
+    "IGR" = unname(blood_cols["Gray"])
+  )
 
-  all_colours[["mutation"]] <-
-    c(
-      "Nonsense_Mutation" = unname(blood_cols["Red"]),
-      "Missense_Mutation" = unname(blood_cols["Light Green"]),
-      "Multi_Hit" = unname(blood_cols["Steel Blue"]),
-      "Frame_Shift_Ins" = unname(blood_cols["Magenta"]),
-      "Frame_Shift_Del" = unname(blood_cols["Magenta"]),
-      "In_Frame_Ins" = unname(blood_cols["Brown"]),
-      "In_Frame_Del" = unname(blood_cols["Brown"]),
-      "Nonstop_Mutation" = unname(blood_cols["Light Blue"]),
-      "Translation_Start_Site" = unname(blood_cols["Lavendar"]),
-      "Splice_Site" = unname(blood_cols["Orange"]),
-      "Splice_Region" = unname(blood_cols["Orange"]),
-      "3'UTR" = unname(blood_cols["Yellow"]),
-      "5'UTR" = unname(blood_cols["LimeGreen"]),
-      "Intron" = unname(blood_cols["Mustard"]),
-      "Silent" = "#D8A7CA"
-    )
-
-  all_colours[["rainfall"]] <-
-    c(
-      "C>A" = "#2196F3FF",
-      "C>G" = "#3F51B5FF",
-      "C>T" = "#F44336FF",
-      "InDel" = "#A020F0",
-      "T>A" = "#4CAF50FF",
-      "T>C" = "#FFC107FF",
-      "T>G" = "#FF9800FF"
-    )
+  all_colours[["rainfall"]] <-c(
+    "C>A" = "#2196F3FF",
+    "C>G" = "#3F51B5FF",
+    "C>T" = "#F44336FF",
+    "InDel" = "#A020F0",
+    "T>A" = "#4CAF50FF",
+    "T>C" = "#FFC107FF",
+    "T>G" = "#FF9800FF"
+  )
 
   all_colours[["pos_neg"]] <- c(
     "POS" = "#c41230",
@@ -284,7 +233,7 @@ get_gambl_colours <- function(classification = "all",
     "0" = "#4393C3"
   )
 
-  all_colours[["aneuploidy"]]=c(
+  all_colours[["aneuploidy"]] <- c(
     "iso-pq_lossgain"="#E208D7",
     "iso-qp_lossgain"="#E563D7",
     "arm-p_gain"="#6B641F",
@@ -295,14 +244,8 @@ get_gambl_colours <- function(classification = "all",
     "arm-q_loss"="#90E0DE"
   )
 
-  all_colours[["blood"]] <- c(
-    "Red" = "#c41230", "Blue" = "#115284", "Light Green" = "#39b54b",
-    "Purple" = "#5c266c", "Orange" = "#fe9003", "Green" = "#046852",
-    "Lavendar" = "#8781bd", "Steel Blue" = "#455564",
-    "Light Blue" = "#2cace3", "Magenta" = "#e90c8b", "Mustard" = "#b76d29",
-    "LimeGreen" = "#a4bb87", "Brown" = "#5f3a17", "Gray" = "#bdbdc1",
-    "Yellow" = "#f9bd1f"
-  )
+  all_colours[["blood"]] <- blood_cols
+
   all_colours[["sex"]] <- c(
     "M" = "#118AB2",
     "Male" = "#118AB2",
@@ -312,56 +255,56 @@ get_gambl_colours <- function(classification = "all",
     "female" = "#EF476F"
   )
 
-  all_colours[["clinical"]] <-
-    c(
-      "M" = "#118AB2",
-      "Male" = "#118AB2",
-      "F" = "#EF476F",
-      "Female" = "#EF476F",
-      "EBV-positive" = "#7F055F",
-      "EBV-negative" = "#E5A4CB",
-      "POS" = "#c41230",
-      "NEG" = "#E88873",
-      "FAIL" = "#bdbdc1",
-      "Alive" = "#046852",
-      "alive" = "#046852",
-      "dead" = "#a4bb87",
-      "Dead" = "#a4bb87",
-      "deceased" = "#a4bb87",
-      "unknown" = "#C3C9E9",
-      "IPI_0" = "#3B9AB2",
-      "IPI_1" = "#78B7C5",
-      "IPI_2" = "#EBCC2A",
-      "IPI_3" = "#E1AF00",
-      "IPI_4" = "#F21A00",
-      "Adult" = "#DCE0E5",
-      "adult" = "#DCE0E5",
-      "Pediatric" = "#677A8E",
-      "pediatric" = "#677A8E",
-      "Diagnosis" = "#E57A44",
-      "A" = "#E57A44",
-      "B" = "#721817",
-      "C" = "#721817",
-      "D" = "#721817",
-      "E" = "#721817",
-      "Progression" = "#A44A3F",
-      "Relapse" = "#721817",
-      "I" = "#75F4F4",
-      "FOLL1" = "#75F4F4",
-      "II" = "#90E0F3",
-      "FOLL2" = "#90E0F3",
-      "IIIA" = "#B8B3E9",
-      "FOLL3A" = "#B8B3E9",
-      "IIIB" = "#D999B9",
-      "FOLL3B" = "#D999B9",
-      "matched" = "#F0B67F",
-      "unmatched" = "#D6D1B1",
-      "FF" = "#009FFD",
-      "frozen" = "#009FFD",
-      "FFPE" = "#95B2B8",
-      "ctDNA" = "#7E6148",
-      "NA" = "white"
-    )
+  all_colours[["clinical"]] <- c(
+    "M" = "#118AB2",
+    "Male" = "#118AB2",
+    "F" = "#EF476F",
+    "Female" = "#EF476F",
+    "EBV-positive" = "#7F055F",
+    "EBV-negative" = "#E5A4CB",
+    "POS" = "#c41230",
+    "NEG" = "#E88873",
+    "FAIL" = "#bdbdc1",
+    "Alive" = "#046852",
+    "alive" = "#046852",
+    "dead" = "#a4bb87",
+    "Dead" = "#a4bb87",
+    "deceased" = "#a4bb87",
+    "unknown" = "#C3C9E9",
+    "IPI_0" = "#3B9AB2",
+    "IPI_1" = "#78B7C5",
+    "IPI_2" = "#EBCC2A",
+    "IPI_3" = "#E1AF00",
+    "IPI_4" = "#F21A00",
+    "Adult" = "#DCE0E5",
+    "adult" = "#DCE0E5",
+    "Pediatric" = "#677A8E",
+    "pediatric" = "#677A8E",
+    "Diagnosis" = "#E57A44",
+    "A" = "#E57A44",
+    "B" = "#721817",
+    "C" = "#721817",
+    "D" = "#721817",
+    "E" = "#721817",
+    "Progression" = "#A44A3F",
+    "Relapse" = "#721817",
+    "I" = "#75F4F4",
+    "FOLL1" = "#75F4F4",
+    "II" = "#90E0F3",
+    "FOLL2" = "#90E0F3",
+    "IIIA" = "#B8B3E9",
+    "FOLL3A" = "#B8B3E9",
+    "IIIB" = "#D999B9",
+    "FOLL3B" = "#D999B9",
+    "matched" = "#F0B67F",
+    "unmatched" = "#D6D1B1",
+    "FF" = "#009FFD",
+    "frozen" = "#009FFD",
+    "FFPE" = "#95B2B8",
+    "ctDNA" = "#7E6148",
+    "NA" = "white"
+  )
+
   all_colours[["pathology"]] <- c(
     "B-ALL" = "#C1C64B",
     "CLL" = "#889BE5",
@@ -396,6 +339,7 @@ get_gambl_colours <- function(classification = "all",
     "SMZL" = "#065A7F",
     "Prolymphocytic" = "#7842f5"
   )
+
   all_colours[["coo"]] <- c(
     "ABC" = "#05ACEF",
     "UNCLASS" = "#05631E",
@@ -410,6 +354,7 @@ get_gambl_colours <- function(classification = "all",
     "DHITsigPos" = "#D62828",
     "NA" = "#ACADAF"
   )
+
   all_colours[["cohort"]] <- c(
     "Chapuy" = "#8B0000", "Chapuy, 2018" = "#8B0000",
     "Arthur" = "#8845A8", "Arthur, 2018" = "#8845A8",
@@ -421,9 +366,22 @@ get_gambl_colours <- function(classification = "all",
     "Grande" = "#e90c8b", "Grande, 2019" = "#e90c8b"
   )
 
-  all_colours[["indels"]] <- c("DEL" = "#53B1FC", "INS" = "#FC9C6D")
-  all_colours[["svs"]] <- c("DEL" = "#53B1FC", "DUP" = "#FC9C6D")
-  all_colours[["genetic_subgroup"]] <- c(all_colours[["lymphgen"]], all_colours[["BL"]], all_colours[["FL"]])
+  all_colours[["indels"]] <- c(
+    "DEL" = "#53B1FC", 
+    "INS" = "#FC9C6D"
+  )
+
+  all_colours[["svs"]] <- c(
+    "DEL" = "#53B1FC", 
+    "DUP" = "#FC9C6D"
+  )
+
+  all_colours[["genetic_subgroup"]] <- c(
+    all_colours[["lymphgen"]], 
+    all_colours[["BL"]], 
+    all_colours[["FL"]]
+  )
+
   all_colours[["domains"]] <- c(
     "#F7FBFF", "#DEEBF7", "#C6DBEF", "#9ECAE1", "#6BAED6", "#4292C6", "#2171B5",
     "#084594", "#FFFFCC", "#FFEDA0", "#FED976", "#FEB24C", "#FD8D3C", "#FC4E2A",
@@ -434,6 +392,17 @@ get_gambl_colours <- function(classification = "all",
     "domain",
     1:length(all_colours[["domains"]])
   )
+
+  all_colours[["genome_build"]] <- c(
+    "grch37" = "#008000", # green
+    "grch37-noalt" = "#023020", # dark green
+    "hg19-clc" = "#7f00ff", # violet
+    "hg19-reddy" = "#7cfc00", # lime green
+    "hs37d5" = "#0096ff", # light blue
+    "hg38" = "#ff0000", # red
+    "hg38-nci" = "#913831", #brown-red
+    "hg38-panea" = "#ff00ff" # fuscia
+    )
 
   # print(all_colours)
   if (alpha < 1) {
