@@ -87,8 +87,8 @@ get_gambl_colours <- function(classification = "all",
   )
 
   all_colours[["type"]] <- c(
-    "gain" = "#0000FF",
-    "loss" = "#FF0000"
+    "gain" = "#B2182B",
+    "loss" = "#4393C3"
   )
 
   all_colours[["hmrn"]] <- c(
