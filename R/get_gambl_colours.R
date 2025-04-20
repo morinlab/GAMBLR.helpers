@@ -119,9 +119,11 @@ get_gambl_colours <- function(classification = "all",
     "DLBCLesque" = "#721F0F",
     "DLBCL-like" = "#721F0F")
 
-  all_colours[["FL"]] <- c(dFL = "#99C1B9", cFL = "#D16666", DLBCL = "#479450",
-                          "MEM-like"="#FFB61F", "GC-like"= "#008AEC")
-
+  all_colours[["FL"]] <- c(dFL = "#99C1B9",
+                           cFL = "#D16666",
+                           DLBCL = "#479450",
+                           `MEM-like` = "#FFB61F",
+                           `GC-like` = "#008AEC")
   all_colours[["lymphgenerator"]] <- c(
     "MP3" = "#5B8565",
     "EGB" = "#98622A",
@@ -163,18 +165,6 @@ get_gambl_colours <- function(classification = "all",
     "POS" = "#7F055F",
     "NEG" = "#E5A4CB"
   )
-
-  all_colours[["BL"]] <- c(
-    "Q53-BL" = "#A6CEE3",
-    "M53-BL" = "#A6CEE3", # added because genetic subgroup still refers to it this way
-    "DLBCL-A" = "#721F0F",
-    "IC-BL" = "#45425A",
-    "DGG-BL" = "#E90C8B",
-    "DLBCL-B" = "#FB9A99",
-    "DLBCL-C" = "#C41230"
-  )
-
-  all_colours[["FL"]] <- c(dFL = "#99C1B9", cFL = "#D16666", DLBCL = "#479450")
 
   all_colours[["lymphgenerator"]] <- c(
     "MP3" = "#5B8565",
@@ -360,7 +350,13 @@ get_gambl_colours <- function(classification = "all",
       "frozen" = "#009FFD",
       "FFPE" = "#95B2B8",
       "ctDNA" = "#7E6148",
-      "NA" = "white"
+      "NA" = "white",
+      "Primary Refractory" = "#9B8FCE",
+      "Early Relapse" = "#66ACDC",
+      "Early" = "#66ACDC",
+      "Late" = "#6BB86A",
+      "Late Relapse" = "#6BB86A",
+      "Diagnostic" = "#E57A44"
     )
   all_colours[["pathology"]] <- c(
     "B-ALL" = "#C1C64B",
@@ -420,7 +416,7 @@ get_gambl_colours <- function(classification = "all",
     "ICGC" = "#E09C3B", "ICGC, 2018" = "#E09C3B",
     "Grande" = "#e90c8b", "Grande, 2019" = "#e90c8b"
   )
-
+  
   all_colours[["indels"]] <- c("DEL" = "#53B1FC", "INS" = "#FC9C6D")
   all_colours[["svs"]] <- c("DEL" = "#53B1FC", "DUP" = "#FC9C6D")
   all_colours[["genetic_subgroup"]] <- c(all_colours[["lymphgen"]], all_colours[["BL"]], all_colours[["FL"]])
