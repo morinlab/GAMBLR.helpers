@@ -10,7 +10,9 @@
 #' @param annotated_maf A data frame in MAF format that has hotspots annotated using the function annotate_hotspots().
 #' @param genes_of_interest A vector of genes for hotspot review. Currently only FOXO1, MYD88, CREBBP, NOTCH1, NOTCH2, CD79B and EZH2 are supported.
 #' @param genome_build Reference genome build for the coordinates in the MAF file. The default is grch37 genome build.
-#'
+#' @param custom_coordinates A data frame with custom coordinates for the hot spots. 
+#' All mutations in any of the regions specified in the data frame will be marked as hot spots.
+#' The data frame must have the following columns: "Hugo_Symbol", "chrom", "start", and "end".
 #' @return The same data frame (as given to the `annotated_maf` parameter) with the reviewed column "hot_spot".
 #'
 #' @import dplyr
@@ -22,7 +24,8 @@
 #'
 review_hotspots = function(annotated_maf,
                            genes_of_interest = c("FOXO1", "MYD88", "CREBBP", "NOTCH1", "NOTCH2", "CD79B", "EZH2"),
-                           genome_build){
+                           genome_build,
+                           custom_coordinates){
   if(missing(genome_build)){
     if("maf_data" %in% class(annotated_maf)){
       genome_build = get_genome_build(annotated_maf)
@@ -37,24 +40,61 @@ review_hotspots = function(annotated_maf,
   supported_genes = c("FOXO1", "MYD88", "CREBBP", "NOTCH1", "NOTCH2", "CD79B", "EZH2")
 
   # check genome build because CREBBP coordinates are hg19-based or hg38-based
-
-  if (genome_build %in% c("hg19", "grch37", "hs37d5", "GRCh37")){
-    coordinates = GAMBLR.data::hotspot_regions_grch37
+  if(!missing(custom_coordinates)){
+    #check for the required columns
+    if(any(!"Hugo_Symbol" %in% colnames(custom_coordinates))){
+      stop("coordinates data frame must have Hugo_Symbol column")
+    }
+    if(!"chrom" %in% colnames(custom_coordinates)){
+      stop("custom_coordinates requires a chrom column specifying the chromosome of each hot spot region")
+    }
+    if(!"start" %in% colnames(custom_coordinates) || !"end" %in% colnames(custom_coordinates) ){
+      stop("custom_coordinates requires a start and end column specifying the boundaries of each hot spot region")
+    }
+    coordinates = custom_coordinates
+  }else if (genome_build %in% c("hg19", "grch37", "hs37d5", "GRCh37")){
+    coordinates = GAMBLR.data::hotspot_regions_grch37 %>% rownames_to_column("Hugo_Symbol")
   }else if(genome_build %in% c("hg38", "grch38", "GRCh38")){
-    coordinates = GAMBLR.data::hotspot_regions_hg38
+    coordinates = GAMBLR.data::hotspot_regions_hg38 %>% rownames_to_column("Hugo_Symbol")
   }else{
     stop("The genome build specified is not currently supported. Please provide MAF file in one of the following cordinates: hg19, grch37, hs37d5, GRCh37, hg38, grch38, or GRCh38")
   }
+  
+  if(!missing(custom_coordinates)){
+    if(!missing(genes_of_interest)){
+      custom_coordinates = filter(custom_coordinates,Hugo_Symbol %in% genes_of_interest)
+    }
+    print("HERE!")
+    custom_coordinates = custom_coordinates %>% dplyr::select(-Hugo_Symbol)
+    #everything is just naive coordinate range-based
+    annotated_maf = cool_overlaps(annotated_maf,
+                                  custom_coordinates,
+                                  columns1 = c("Chromosome","Start_Position","End_Position"),
+                                  columns2 = c("chrom","start","end"),
+                                  type = "any",
+                                  nomatch = TRUE) 
+      print(table(is.na(annotated_maf$start)))
+      annotated_maf = annotated_maf %>% 
+        mutate(hot_spot = ifelse(is.na(start),FALSE,TRUE))
+      message("Hotspot review complete")
+      return(annotated_maf)
+  }
   # check that at least one of the currently supported genes are present
   if (length(intersect(supported_genes, genes_of_interest))==0){
-      stop(paste0("Currently only ",  paste(supported_genes, collapse=", "), " are supported. Please specify one of these genes."))
+      stop(paste0("Currently only ",  paste(supported_genes, collapse=", "), 
+                  " are supported. Please specify one of these genes."))
   }
   # notify user that there is limited number of genes currently supported
+  
+
   if (length(setdiff(genes_of_interest, supported_genes))>0){
       message(strwrap(paste0("Currently only ", paste(supported_genes, collapse=", "),
-                             " are supported. By default only these genes from the supplied list will be reviewed. Reviewing hotspots for genes ",
-                             paste(intersect(supported_genes, genes_of_interest), collapse = ", "), ", it will take a second ...")))
+                             " are supported. By default only these genes from the",
+                             "supplied list will be reviewed. Reviewing hotspots for genes ",
+                             paste(intersect(supported_genes, genes_of_interest),
+                                   collapse = ", "), ", it will take a second ...")))
   }
+
   if("FOXO1" %in% genes_of_interest){
       annotated_maf = annotated_maf %>%
         dplyr::mutate(hot_spot = ifelse(Hugo_Symbol == "FOXO1" &
