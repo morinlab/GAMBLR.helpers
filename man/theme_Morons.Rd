@@ -6,7 +6,7 @@
 \usage{
 theme_Morons(
   base_size = 14,
-  base_family = "Arial",
+  base_family = "Helvetica",
   my_legend_position = "bottom",
   my_legend_direction = "horizontal"
 )

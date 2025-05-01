@@ -36,8 +36,8 @@ get_gambl_colours <- function(classification = "all",
   everything <- c()
 
   #Same as the colours used in IGV
-  all_colours[["chromosome"]] =
-               c("chr1"="#555FAB",
+  all_colours[["chromosome"]] =c(
+                "chr1"="#555FAB",
                 "chr2"="#CE3D31",
                 "chr3"="#749B58",
                 "chr4"="#F0E584",
@@ -59,7 +59,8 @@ get_gambl_colours <- function(classification = "all",
                 "chr20"="#AF2064",
                 "chr21"="#E6C66F",
                 "chr22"="#5B665D",
-                "chrX"="#CA992C")
+                "chrX"="#CA992C"
+  )
 
   blood_cols <- c(
     Red = "#c41230",
@@ -86,9 +87,9 @@ get_gambl_colours <- function(classification = "all",
   )
 
   all_colours[["type"]] <- c(
-    "gain" = "#0000FF",
-    "loss" = "#FF0000"
-  )
+
+     "gain" = "#B2182B",
+    "loss" = "#4393C3")
 
   all_colours[["hmrn"]] <- c(
     "BCL2-MYC" = "#52000F",
@@ -207,36 +208,36 @@ get_gambl_colours <- function(classification = "all",
     "COMPOSITE" = "#ACADAF"
   )
 
+  all_colours[["mutation"]] <-c(
+    "Nonsense_Mutation" = unname(blood_cols["Red"]),
+    "Missense_Mutation" = unname(blood_cols["Light Green"]),
+    "Multi_Hit" = unname(blood_cols["Steel Blue"]),
+    "Frame_Shift_Ins" = unname(blood_cols["Magenta"]),
+    "Frame_Shift_Del" = unname(blood_cols["Magenta"]),
+    "In_Frame_Ins" = unname(blood_cols["Brown"]),
+    "In_Frame_Del" = unname(blood_cols["Brown"]),
+    "Nonstop_Mutation" = unname(blood_cols["Light Blue"]),
+    "Translation_Start_Site" = unname(blood_cols["Lavendar"]),
+    "Splice_Site" = unname(blood_cols["Orange"]),
+    "Splice_Region" = unname(blood_cols["Orange"]),
+    "3'UTR" = unname(blood_cols["Yellow"]),
+    "3'Flank" = "#FBEC5D",
+    "5'UTR" = unname(blood_cols["LimeGreen"]),
+    "5'Flank" = "#4b5c34",
+    "Intron" = unname(blood_cols["Mustard"]),
+    "Silent" = "#D8A7CA",
+    "IGR" = unname(blood_cols["Gray"])
+  )
 
-  all_colours[["mutation"]] <-
-    c(
-      "Nonsense_Mutation" = unname(blood_cols["Red"]),
-      "Missense_Mutation" = unname(blood_cols["Light Green"]),
-      "Multi_Hit" = unname(blood_cols["Steel Blue"]),
-      "Frame_Shift_Ins" = unname(blood_cols["Magenta"]),
-      "Frame_Shift_Del" = unname(blood_cols["Magenta"]),
-      "In_Frame_Ins" = unname(blood_cols["Brown"]),
-      "In_Frame_Del" = unname(blood_cols["Brown"]),
-      "Nonstop_Mutation" = unname(blood_cols["Light Blue"]),
-      "Translation_Start_Site" = unname(blood_cols["Lavendar"]),
-      "Splice_Site" = unname(blood_cols["Orange"]),
-      "Splice_Region" = unname(blood_cols["Orange"]),
-      "3'UTR" = unname(blood_cols["Yellow"]),
-      "5'UTR" = unname(blood_cols["LimeGreen"]),
-      "Intron" = unname(blood_cols["Mustard"]),
-      "Silent" = "#D8A7CA"
-    )
-
-  all_colours[["rainfall"]] <-
-    c(
-      "C>A" = "#2196F3FF",
-      "C>G" = "#3F51B5FF",
-      "C>T" = "#F44336FF",
-      "InDel" = "#A020F0",
-      "T>A" = "#4CAF50FF",
-      "T>C" = "#FFC107FF",
-      "T>G" = "#FF9800FF"
-    )
+  all_colours[["rainfall"]] <-c(
+    "C>A" = "#2196F3FF",
+    "C>G" = "#3F51B5FF",
+    "C>T" = "#F44336FF",
+    "InDel" = "#A020F0",
+    "T>A" = "#4CAF50FF",
+    "T>C" = "#FFC107FF",
+    "T>G" = "#FF9800FF"
+  )
 
   all_colours[["pos_neg"]] <- c(
     "POS" = "#c41230",
@@ -274,7 +275,7 @@ get_gambl_colours <- function(classification = "all",
     "0" = "#4393C3"
   )
 
-  all_colours[["aneuploidy"]]=c(
+  all_colours[["aneuploidy"]] <- c(
     "iso-pq_lossgain"="#E208D7",
     "iso-qp_lossgain"="#E563D7",
     "arm-p_gain"="#6B641F",
@@ -285,14 +286,8 @@ get_gambl_colours <- function(classification = "all",
     "arm-q_loss"="#90E0DE"
   )
 
-  all_colours[["blood"]] <- c(
-    "Red" = "#c41230", "Blue" = "#115284", "Light Green" = "#39b54b",
-    "Purple" = "#5c266c", "Orange" = "#fe9003", "Green" = "#046852",
-    "Lavendar" = "#8781bd", "Steel Blue" = "#455564",
-    "Light Blue" = "#2cace3", "Magenta" = "#e90c8b", "Mustard" = "#b76d29",
-    "LimeGreen" = "#a4bb87", "Brown" = "#5f3a17", "Gray" = "#bdbdc1",
-    "Yellow" = "#f9bd1f"
-  )
+  all_colours[["blood"]] <- blood_cols
+
   all_colours[["sex"]] <- c(
     "M" = "#118AB2",
     "Male" = "#118AB2",
@@ -392,6 +387,7 @@ get_gambl_colours <- function(classification = "all",
     "SMZL" = "#065A7F",
     "Prolymphocytic" = "#7842f5"
   )
+
   all_colours[["coo"]] <- c(
     "ABC" = "#05ACEF",
     "UNCLASS" = "#05631E",
@@ -406,6 +402,7 @@ get_gambl_colours <- function(classification = "all",
     "DHITsigPos" = "#D62828",
     "NA" = "#ACADAF"
   )
+
   all_colours[["cohort"]] <- c(
     "Chapuy" = "#8B0000", "Chapuy, 2018" = "#8B0000",
     "Arthur" = "#8845A8", "Arthur, 2018" = "#8845A8",
@@ -416,10 +413,23 @@ get_gambl_colours <- function(classification = "all",
     "ICGC" = "#E09C3B", "ICGC, 2018" = "#E09C3B",
     "Grande" = "#e90c8b", "Grande, 2019" = "#e90c8b"
   )
-  
-  all_colours[["indels"]] <- c("DEL" = "#53B1FC", "INS" = "#FC9C6D")
-  all_colours[["svs"]] <- c("DEL" = "#53B1FC", "DUP" = "#FC9C6D")
-  all_colours[["genetic_subgroup"]] <- c(all_colours[["lymphgen"]], all_colours[["BL"]], all_colours[["FL"]])
+
+  all_colours[["indels"]] <- c(
+    "DEL" = "#53B1FC", 
+    "INS" = "#FC9C6D"
+  )
+
+  all_colours[["svs"]] <- c(
+    "DEL" = "#53B1FC", 
+    "DUP" = "#FC9C6D"
+  )
+
+  all_colours[["genetic_subgroup"]] <- c(
+    all_colours[["lymphgen"]], 
+    all_colours[["BL"]], 
+    all_colours[["FL"]]
+  )
+
   all_colours[["domains"]] <- c(
     "#F7FBFF", "#DEEBF7", "#C6DBEF", "#9ECAE1", "#6BAED6", "#4292C6", "#2171B5",
     "#084594", "#FFFFCC", "#FFEDA0", "#FED976", "#FEB24C", "#FD8D3C", "#FC4E2A",
@@ -430,6 +440,17 @@ get_gambl_colours <- function(classification = "all",
     "domain",
     1:length(all_colours[["domains"]])
   )
+
+  all_colours[["genome_build"]] <- c(
+    "grch37" = "#008000", # green
+    "grch37-noalt" = "#023020", # dark green
+    "hg19-clc" = "#7f00ff", # violet
+    "hg19-reddy" = "#7cfc00", # lime green
+    "hs37d5" = "#0096ff", # light blue
+    "hg38" = "#ff0000", # red
+    "hg38-nci" = "#913831", #brown-red
+    "hg38-panea" = "#ff00ff" # fuscia
+    )
 
   # print(all_colours)
   if (alpha < 1) {
