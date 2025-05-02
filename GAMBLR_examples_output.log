@@ -1,0 +1,126 @@
+[1] "=== STARTED AT 2025-04-02 09:48:57.062133 ==="
+── Running 40 example files ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── GAMBLR.helpers ──
+
+> library(GAMBLR.open)
+
+> maf1 <- get_ssm_by_samples()
+
+> coding_counts = calculate_tmb(maf1)
+
+> dplyr::filter(coding_counts, Tumor_Sample_Barcode == 
++     "OCI-Ly10")
+genomic_data Object
+Genome Build: 
+Showing first 10 rows:
+  Tumor_Sample_Barcode total total_perMB
+1             OCI-Ly10   258  0.08417333
+
+> all_counts = calculate_tmb(maf1, subset_to_nonSyn = FALSE)
+
+> dplyr::filter(all_counts, Tumor_Sample_Barcode == 
++     "OCI-Ly10")
+genomic_data Object
+Genome Build: 
+Showing first 10 rows:
+  Tumor_Sample_Barcode total total_perMB
+1             OCI-Ly10 30051    9.804236
+
+> check_config_and_value("resources$blacklist$template")
+[1] "all_the_things/slms_3-1.0_vcf2maf-1.3/level_3/{seq_type}--{projection}_clean_blacklist.txt"
+
+> maf1 <- get_coding_ssm(these_sample_ids = "DOHH-2")
+
+> maf2 <- get_coding_ssm(these_sample_ids = "SU-DHL-4")
+
+> overlap <- cool_overlaps(maf1, maf1, type = "equal")
+
+> overlap <- cool_overlaps(maf1, maf1 %>% head)
+
+> seg1 <- get_sample_cn_segments(these_sample_ids = "DOHH-2")
+
+> overlap <- cool_overlaps(data1 = maf1, data2 = seg1, 
++     columns2 = c("chrom", "start", "end"))
+
+> library(GAMBLR.data)
+
+> maf <- get_coding_ssm()
+
+> onco_matrix <- create_onco_matrix(maf_df = maf)
+
+> library(GAMBLR.open)
+
+> in_bed = get_manta_sv(projection = "hg38")
+
+> coloured_bed = decorate_bed(in_bed, colour_mapping = get_gambl_colours("chromosome", 
++     as_rgb_string = T))
+
+> lymphgen_cols <- get_gambl_colours("lymphgen")
+
+> P <- c(0.1, 0.4, 0.3, 0.2)
+
+> Q <- c(0.2, 0.3, 0.4, 0.1)
+
+> kl_divergence(P, Q)
+[1] 0.09808283
+
+> library(dplyr)
+
+> regions <- setNames(c("chr1:10000-15000", "chr1:100000000-100005000"), 
++     c("one_region", "another_region"))
+
+> process_regions(regions_list = regions)
+$regions_list
+         one_region      another_region 
+    "1:10000-15000" "1:1e+08-100005000" 
+
+$regions_bed
+  chrom start       end           name           gene
+1     1 1e+04     15000     one_region     one_region
+2     1 1e+08 100005000 another_region another_region
+
+
+> reg_bed = GAMBLR.data::grch37_ashm_regions %>% dplyr::filter(chr_name == 
++     "chr17") %>% mutate(name = region, chrom = chr_name, start = hg19_start, 
++     end = hg19_end) %>% select(chrom, start, end, name)
+
+> process_regions(regions_bed = reg_bed)
+$regions_list
+                      TSS                     TSS-1                     TSS-2                intergenic                  intron-1                  intron-2                  intron-3                    intron 
+  "chr17:3597616-3599572" "chr17:37928959-37940119" "chr17:38015776-38024832" "chr17:56407732-56410140" "chr17:75424734-75440956" "chr17:75443766-75451177" "chr17:75453203-75471471" "chr17:79478289-79479959" 
+
+$regions_bed
+  chrom    start      end       name       gene
+1 chr17  3597616  3599572        TSS        TSS
+2 chr17 37928959 37940119      TSS-1      TSS-1
+3 chr17 38015776 38024832      TSS-2      TSS-2
+4 chr17 56407732 56410140 intergenic intergenic
+5 chr17 75424734 75440956   intron-1   intron-1
+6 chr17 75443766 75451177   intron-2   intron-2
+7 chr17 75453203 75471471   intron-3   intron-3
+8 chr17 79478289 79479959     intron     intron
+
+
+> region_to_chunks(region = "chr1:100000-200000")
+$chromosome
+[1] "chr1"
+
+$start
+[1] "100000"
+
+$end
+[1] "200000"
+
+
+> hot_ssms = review_hotspots(annotate_hotspots(get_coding_ssm(this_seq_type = "genome")), 
++     genes_of_interest = c("CREBBP"))
+
+> these_chrs = c(8, "13", "chr4", "chrY")
+
+> standardize_chr_prefix(incoming_vector = these_chrs, 
++     projection = "hg38")
+[1] "chr8"  "chr13" "chr4"  "chrY" 
+
+> library(ggplot2)
+
+> ggplot(mpg, aes(displ, hwy, colour = class)) + geom_point() + 
++     theme_Morons()

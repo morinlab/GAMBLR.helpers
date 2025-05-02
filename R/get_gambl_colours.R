@@ -87,9 +87,9 @@ get_gambl_colours <- function(classification = "all",
   )
 
   all_colours[["type"]] <- c(
-    "gain" = "#B2182B",
-    "loss" = "#4393C3"
-  )
+
+     "gain" = "#B2182B",
+    "loss" = "#4393C3")
 
   all_colours[["hmrn"]] <- c(
     "BCL2-MYC" = "#52000F",
@@ -116,13 +116,55 @@ get_gambl_colours <- function(classification = "all",
     "IC-BL" = "#45425A",
     "DGG-BL" = "#E90C8B",
     "DLBCL-B" = "#FB9A99",
-    "DLBCL-C" = "#C41230"
+    "DLBCL-C" = "#C41230",
+    "DLBCLesque" = "#721F0F",
+    "DLBCL-like" = "#721F0F")
+
+  all_colours[["FL"]] <- c(dFL = "#99C1B9",
+                           cFL = "#D16666",
+                           DLBCL = "#479450",
+                           `MEM-like` = "#FFB61F",
+                           `GC-like` = "#008AEC")
+  all_colours[["lymphgenerator"]] <- c(
+    "MP3" = "#5B8565",
+    "EGB" = "#98622A",
+    "ETB" = "#813F3D",
+    "aSCI" = "#D66B1F",
+    "aSEL" = "#6A0D18",
+    "MCaP" = "#5F8CFF",
+    "BNZ" = "#8870B6",
+    "EZB" = "#721F0F",
+    "ST2" = "#C41230",
+    "UNCLASS" = "#05631E"
   )
 
-  all_colours[["FL"]] <- c(
-    dFL = "#99C1B9", 
-    cFL = "#D16666", 
-    DLBCL = "#479450"
+  all_colours[["seq_type"]] <- c(
+    "mrna" = "#E41A1C",
+    "genome" = "#377EB8",
+    "capture" = "#4DAF4A"
+  )
+
+  all_colours[["type"]] <- c(
+    "gain" = "#0000FF",
+    "loss" = "#FF0000"
+  )
+
+  all_colours[["hmrn"]] <- c(
+    "BCL2-MYC" = "#52000F",
+    "BCL2" = "#721F0F",
+    "SOCS1/SGK1" = "#D66B1F",
+    "TET2/SGK1" = "#C41230",
+    "MYD88" = "#3B5FAC",
+    "NOTCH2" = "#7F3293",
+    "NOTCH1" = "#55B55E",
+    "Other" = "#ACADAF"
+  )
+
+  all_colours[["EBV"]] <- c(
+    "EBV-positive" = "#7F055F",
+    "EBV-negative" = "#E5A4CB",
+    "POS" = "#7F055F",
+    "NEG" = "#E5A4CB"
   )
 
   all_colours[["lymphgenerator"]] <- c(
@@ -255,56 +297,62 @@ get_gambl_colours <- function(classification = "all",
     "female" = "#EF476F"
   )
 
-  all_colours[["clinical"]] <- c(
-    "M" = "#118AB2",
-    "Male" = "#118AB2",
-    "F" = "#EF476F",
-    "Female" = "#EF476F",
-    "EBV-positive" = "#7F055F",
-    "EBV-negative" = "#E5A4CB",
-    "POS" = "#c41230",
-    "NEG" = "#E88873",
-    "FAIL" = "#bdbdc1",
-    "Alive" = "#046852",
-    "alive" = "#046852",
-    "dead" = "#a4bb87",
-    "Dead" = "#a4bb87",
-    "deceased" = "#a4bb87",
-    "unknown" = "#C3C9E9",
-    "IPI_0" = "#3B9AB2",
-    "IPI_1" = "#78B7C5",
-    "IPI_2" = "#EBCC2A",
-    "IPI_3" = "#E1AF00",
-    "IPI_4" = "#F21A00",
-    "Adult" = "#DCE0E5",
-    "adult" = "#DCE0E5",
-    "Pediatric" = "#677A8E",
-    "pediatric" = "#677A8E",
-    "Diagnosis" = "#E57A44",
-    "A" = "#E57A44",
-    "B" = "#721817",
-    "C" = "#721817",
-    "D" = "#721817",
-    "E" = "#721817",
-    "Progression" = "#A44A3F",
-    "Relapse" = "#721817",
-    "I" = "#75F4F4",
-    "FOLL1" = "#75F4F4",
-    "II" = "#90E0F3",
-    "FOLL2" = "#90E0F3",
-    "IIIA" = "#B8B3E9",
-    "FOLL3A" = "#B8B3E9",
-    "IIIB" = "#D999B9",
-    "FOLL3B" = "#D999B9",
-    "matched" = "#F0B67F",
-    "unmatched" = "#D6D1B1",
-    "FF" = "#009FFD",
-    "frozen" = "#009FFD",
-    "FFPE" = "#95B2B8",
-    "ctDNA" = "#7E6148",
-    "NA" = "white"
-  )
-
+  all_colours[["clinical"]] <-
+    c(
+      "M" = "#118AB2",
+      "Male" = "#118AB2",
+      "F" = "#EF476F",
+      "Female" = "#EF476F",
+      "EBV-positive" = "#7F055F",
+      "EBV-negative" = "#E5A4CB",
+      "POS" = "#c41230",
+      "NEG" = "#E88873",
+      "FAIL" = "#bdbdc1",
+      "Alive" = "#046852",
+      "alive" = "#046852",
+      "dead" = "#a4bb87",
+      "Dead" = "#a4bb87",
+      "deceased" = "#a4bb87",
+      "unknown" = "#C3C9E9",
+      "IPI_0" = "#3B9AB2",
+      "IPI_1" = "#78B7C5",
+      "IPI_2" = "#EBCC2A",
+      "IPI_3" = "#E1AF00",
+      "IPI_4" = "#F21A00",
+      "Adult" = "#DCE0E5",
+      "adult" = "#DCE0E5",
+      "Pediatric" = "#677A8E",
+      "pediatric" = "#677A8E",
+      "Diagnosis" = "#E57A44",
+      "A" = "#E57A44",
+      "B" = "#721817",
+      "C" = "#721817",
+      "D" = "#721817",
+      "E" = "#721817",
+      "Progression" = "#A44A3F",
+      "Relapse" = "#721817",
+      "I" = "#75F4F4",
+      "FOLL1" = "#75F4F4",
+      "II" = "#90E0F3",
+      "FOLL2" = "#90E0F3",
+      "IIIA" = "#B8B3E9",
+      "FOLL3A" = "#B8B3E9",
+      "IIIB" = "#D999B9",
+      "FOLL3B" = "#D999B9",
+      "matched" = "#F0B67F",
+      "unmatched" = "#D6D1B1",
+      "FF" = "#009FFD",
+      "frozen" = "#009FFD",
+      "FFPE" = "#95B2B8",
+      "ctDNA" = "#7E6148",
+      "NA" = "white",
+      "Primary Refractory" = "#9B8FCE",
+      "Early Relapse" = "#66ACDC",
+      "Early" = "#66ACDC",
+      "Late" = "#6BB86A",
+      "Late Relapse" = "#6BB86A",
+      "Diagnostic" = "#E57A44"
+    )
   all_colours[["pathology"]] <- c(
     "B-ALL" = "#C1C64B",
     "CLL" = "#889BE5",

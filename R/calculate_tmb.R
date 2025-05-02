@@ -23,19 +23,18 @@
 #'
 #' @examples
 #' # obtain maf data
-#' library(GAMBLR.data)
+#' library(GAMBLR.open)
 #' maf1 <- get_ssm_by_samples()
 #'
-#' calculate_tmb(maf1)
-#' calculate_tmb(
+#' coding_counts = calculate_tmb(maf1)
+#' 
+#' dplyr::filter(coding_counts,Tumor_Sample_Barcode=="OCI-Ly10")
+#' 
+#' all_counts = calculate_tmb(
 #'     maf1,
-#'     regions_bed = grch37_ashm_regions
-#' )
-#' calculate_tmb(
-#'     maf1,
-#'     regions_bed = grch37_ashm_regions,
 #'     subset_to_nonSyn = FALSE
 #' )
+#' dplyr::filter(all_counts,Tumor_Sample_Barcode=="OCI-Ly10")
 #'
 #' @import dplyr GAMBLR.data
 #' @export
@@ -122,7 +121,7 @@ calculate_tmb <- function(
     # Now calculate N of mutations and TMB
     tmb <- maf_data %>%
         dplyr::count(Tumor_Sample_Barcode) %>%
-        dplyr::mutate(total_perMB = n/denominator_size) %>%
+        dplyr::mutate(total_perMB = 1000000 * n/denominator_size) %>%
         select(
             Tumor_Sample_Barcode,
             total = n,

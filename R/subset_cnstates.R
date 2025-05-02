@@ -1,4 +1,4 @@
-#' @title Subset CN States.
+#' @title Subset CN States. DEPRECATED
 #'
 #' @description Get the available CN states in the incoming data frame.
 #'
@@ -8,21 +8,22 @@
 #' @param include_2 Optional parameter for including or omit CN state == 2. Default is FALSE.
 #' @param samplen Numeric value that annotates the sample order.
 #'
-#' @return Nothing.
+#' @return Nothing
 #'
 #' @examples
-#' cn_states = get_sample_cn_segments(these_sample_ids = c("02-13135T",
-#'                                                         "SU-DHL-4"),
-#'                                    streamlined = FALSE)
+#' \dontrun{
+#' meta = get_gambl_metadata() %>% dplyr::filter(sample_id %in% c("02-13135T","SU-DHL-4"))
+#' cn_states = get_cn_segments(these_samples_metadata=meta)
 #'
-#' subset_cnstates(cn_segments = cn_states,
+#' subsetted = subset_cnstates(cn_segments = cn_states,
 #'                 samplen = 1)
-#'
+#' dim(subsetted)
+#' }
 #' @export
 subset_cnstates = function(cn_segments,
                            include_2 = FALSE,
                            samplen){
-
+  stop("this function is currently deprecated")
   #transform CN states > 6 = 6 (to reflect the current copy number palette in gamblr)
   cn_segments$CN[cn_segments$CN > 6] = 6
 

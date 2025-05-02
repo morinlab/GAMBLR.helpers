@@ -29,6 +29,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' maf1 <- get_coding_ssm(
 #'     these_sample_ids = "DOHH-2"
 #' )
@@ -49,7 +50,7 @@
 #'     maf1 = maf_1,
 #'     maf2 = maf_1
 #' )
-#'
+#'}
 fuzzy_match_mafs <- function(
     maf1,
     maf2,

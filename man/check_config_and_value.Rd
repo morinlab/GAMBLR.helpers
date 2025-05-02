@@ -23,6 +23,6 @@ INTERNAL FUNCTION for checking the existence of a config value,
 not meant for out-of-package usage.
 }
 \examples{
-check_config_value(config::get("resources")$blacklist$template)
+check_config_and_value("resources$blacklist$template")
 
 }
