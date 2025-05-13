@@ -8,7 +8,9 @@ check_config_and_value(config_key, config_name)
 }
 \arguments{
 \item{config_key}{A string of one or more nested keys to retrieve
-from the config in the format "$key1$key2$keyN"}
+from the config in the format "$key1$key2$keyN"#'}
+
+\item{config_name}{Additional argument}
 }
 \value{
 A string with the value from the config key or nothing

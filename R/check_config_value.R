@@ -33,7 +33,8 @@ check_config_value = function(config_key){
 #' not meant for out-of-package usage.
 #'
 #' @param config_key A string of one or more nested keys to retrieve 
-#' from the config in the format "$key1$key2$keyN"
+#' from the config in the format "$key1$key2$keyN"#'
+#' @param config_name Additional argument
 #'
 #' @return A string with the value from the config key or nothing
 #' (if config key is NULL or missing).

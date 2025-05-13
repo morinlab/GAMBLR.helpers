@@ -28,7 +28,7 @@ Decorate a bed or bedpe file
 }
 \examples{
 
-library(GAMBLR.open)
+# library(GAMBLR.open)
 \dontrun{
 in_bed = get_manta_sv(projection="hg38")
 # TODO: update decorate_bed to handle non-prefixed chromosome names
