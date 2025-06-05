@@ -120,6 +120,8 @@ review_hotspots = function(annotated_maf,
                                         HGVSp_Short == "p.M1?",
                                         "TRUE", hot_spot))
   }
+  coordinates = coordinates %>% column_to_rownames("Hugo_Symbol")
+
 
   if("CREBBP" %in% genes_of_interest){
       annotated_maf = annotated_maf %>%
