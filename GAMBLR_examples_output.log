@@ -1,5 +1,5 @@
-[1] "=== STARTED AT 2025-04-02 09:48:57.062133 ==="
-── Running 40 example files ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── GAMBLR.helpers ──
+[1] "=== STARTED AT 2025-06-05 15:05:24 ==="
+── Running 40 example files ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── GAMBLR.helpers ──
 
 > library(GAMBLR.open)
 
@@ -46,8 +46,6 @@ Showing first 10 rows:
 > maf <- get_coding_ssm()
 
 > onco_matrix <- create_onco_matrix(maf_df = maf)
-
-> library(GAMBLR.open)
 
 > in_bed = get_manta_sv(projection = "hg38")
 
@@ -124,3 +122,9 @@ $end
 
 > ggplot(mpg, aes(displ, hwy, colour = class)) + geom_point() + 
 +     theme_Morons()
+
+> trimmed = trim_scale_expression(c(2, 4, 6, 4, 4.5))
+
+> trimmed
+[1] 0.0000000 0.4848485 1.0000000 0.4848485 0.6363636
+[1] "=== COMPLETED AT 2025-06-05 15:06:54 ==="
