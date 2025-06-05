@@ -42,7 +42,7 @@ TODO: add more details.
 }
 \examples{
 # obtain maf data
-library(GAMBLR.open)
+# library(GAMBLR.open)
 maf1 <- get_ssm_by_samples()
 
 coding_counts = calculate_tmb(maf1)
