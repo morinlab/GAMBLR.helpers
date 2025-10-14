@@ -24,6 +24,7 @@
 #' @export
 #'
 #' @examples
+#' library(tibble)
 #' test_this <- GAMBLR.data::gencode_to_symbol %>%
 #'     select(1) %>%
 #'     head(10) %>%

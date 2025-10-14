@@ -37,6 +37,7 @@ pseudogenes etc, and they will be dropped from the resulting output of
 this function.
 }
 \examples{
+library(tibble)
 test_this <- GAMBLR.data::gencode_to_symbol \%>\%
     select(1) \%>\%
     head(10) \%>\%
