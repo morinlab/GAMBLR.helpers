@@ -2,94 +2,62 @@
 #'
 #' @description Add miRNA data to MAF file.
 #'
-#' @details This function considers the positions of the variants and looks for 
-#' mirnas targets that are in the same positions to add their names and sites to
-#' them.  
+#' @details For each variant, this function checks its genomic position against known miRNA target sites.
+#' When an overlap is found, it appends the matched miRNA name(s) and target site details to the variant.
 #'
 #' @param maf Required. MAF data frame (required columns: Chromosome, Start_Position, End_Position).
-#' @param mirna_target Data frame contain miRNA data (required columns: Chromosome, Start_Position, End_Position, miRNA, sites)
+#' @param mirna_target Data frame contain miRNA data (required columns: Chromosome, Start_Position, End_Position, miRNA)
+#'   If you are using Grch37, you may omit this argument; the function will use
+#'   TargetScanHuman miRNA target locations by default. 
 #' @param projection The genome build projection for the variants you are working with (default is grch37)
 #'
-#' @return data frame in MAF format with mirna and sites columns.
+#' @return data frame in MAF format with mirna (and sites := length of the seed region) columns.
 #'
-#' @import dplyr tidyr purrr
-#'
+#' @import dplyr tidyr Rcpp GAMBLR.data
+#' @export
+#' 
+#' 
 #' @examples
-#' sample_df = target_targetscan (maf)
-#'
+#' \dontrun{
+#' sample = target_targetscan(maf, mirna_target)
+#'}
+
 
 
 target_targetscan <- function(
-                              maf,
-                              mirna_target,
-                              projection = "grch37"
+    maf,
+    mirna_target,
+    projection = "grch37"
 ){
-    if (projection == "grch37") {
-      maf$Chromosome <- gsub("chr", "", maf$Chromosome)
+    if (missing(mirna_target)){
+      if (projection %in% c("grch37", "hg19") ){
+        mirna_target <- GAMBLR.data::mirna_targetscan
+      } else {
+        stop("Please provide a miRNA targets file via `mirna_target`.")
+      }
+    }
+    if (!"sites" %in% names(mirna_target)){
+      mirna_target$sites <- NA_integer_
+    }  
+    if (all(grepl("^chr", maf$Chromosome))) {
+      mirna_target$Chromosome <- gsub("chr", "", mirna_target$Chromosome) 
+      mirna_target$Chromosome <- paste0("chr", mirna_target$Chromosome)
     } else {
       # If there is a mix of prefixed and non-prefixed options
       maf$Chromosome <- gsub("chr", "", maf$Chromosome) 
       maf$Chromosome <- paste0("chr", maf$Chromosome)
+      mirna_target$Chromosome <- gsub("chr", "", mirna_target$Chromosome) 
+      mirna_target$Chromosome <- paste0("chr", mirna_target$Chromosome)
     }
-    if (missing(mirna_target)){
-      mirna_target <- GAMBLR.data::mirna_targetscan
-    }
-    mirna <- mirna_target %>%
-            arrange(
-              Chromosome,
-              Start_Position,
-              End_Position
-            )
-    maf_mi <- pmap(
-                list(
-                  maf$Chromosome,
-                  maf$Start_Position,
-                  maf$End_Position
-                ),
-                function(
-                  chrom,
-                  start_pos,
-                  end_pos
-                ) {
-                    match <- mirna %>%
-                          filter(
-                            (Chromosome == chrom) &
-                              (Start_Position <= start_pos &
-                                 End_Position >= start_pos) |
-                                  (Start_Position > start_pos &
-                                     Start_Position <= end_pos
-                                   )
-                          )
-                    if (nrow(match) == 0) {
-                      data.frame(
-                        Chromosome = chrom,
-                        Start_Position = start_pos,
-                        End_Position = end_pos,
-                        miRNA = NA,
-                        sites = NA
-                      )
-                    } else {
-                      match %>%
-                        mutate(
-                          Chromosome = chrom,
-                          Start_Position = start_pos,
-                          End_Position = end_pos) %>%
-                            select(
-                              Chromosome,
-                              Start_Position,
-                              End_Position,
-                              miRNA,
-                              sites
-                            )
-                    }
-                }
-              )
-    mi_match <- bind_rows(maf_mi)
-    output <- left_join(
-                maf,
-                mi_match,
-                relationship = "many-to-many"
-              ) %>%
-                distinct()
-    return(output)
+    
+    cpp_path <- system.file("R", "targetscan_core_code.cpp", package = "GAMBLR.helpers")
+    if (cpp_path == "" || !file.exists(cpp_path)) stop("C++ file not found in package.")
+    Rcpp::sourceCpp(cpp_path)
+    
+    targetscan_res = targetscan_rcpp(maf, mirna_target)
+    
+    final_maf = left_join(maf, targetscan_res, relationship = "many-to-many") %>% distinct()
+    
+    return(final_maf)
 }
+  

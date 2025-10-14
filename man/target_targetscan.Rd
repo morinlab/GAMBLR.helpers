@@ -9,22 +9,24 @@ target_targetscan(maf, mirna_target, projection = "grch37")
 \arguments{
 \item{maf}{Required. MAF data frame (required columns: Chromosome, Start_Position, End_Position).}
 
-\item{mirna_target}{Data frame contain miRNA data (required columns: Chromosome, Start_Position, End_Position, miRNA, sites)}
+\item{mirna_target}{Data frame contain miRNA data (required columns: Chromosome, Start_Position, End_Position, miRNA)
+If you are using Grch37, you may omit this argument; the function will use
+TargetScanHuman miRNA target locations by default.}
 
 \item{projection}{The genome build projection for the variants you are working with (default is grch37)}
 }
 \value{
-data frame in MAF format with mirna and sites columns.
+data frame in MAF format with mirna (and sites := length of the seed region) columns.
 }
 \description{
 Add miRNA data to MAF file.
 }
 \details{
-This function considers the positions of the variants and looks for
-mirnas targets that are in the same positions to add their names and sites to
-them.
+For each variant, this function checks its genomic position against known miRNA target sites.
+When an overlap is found, it appends the matched miRNA name(s) and target site details to the variant.
 }
 \examples{
-sample_df = target_targetscan (maf)
-
+\dontrun{
+sample = target_targetscan(maf, mirna_target)
+}
 }
