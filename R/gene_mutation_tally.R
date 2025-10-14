@@ -17,6 +17,7 @@
 #'
 #' @return data frame
 #'
+#' @import dplyr
 #' @export
 gene_mutation_tally = function(maf_df,these_samples_metadata,these_genes,grouping_variable="cohort"){
   meta = dplyr::select(these_samples_metadata,sample_id,{{grouping_variable}})

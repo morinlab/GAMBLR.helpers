@@ -46,6 +46,7 @@ maf1. The values in maf2_ID are derived from maf2 and are NA for any rows
 that could not be matched to maf2.
 }
 \examples{
+\dontrun{
 maf1 <- get_coding_ssm(
     these_sample_ids = "DOHH-2"
 )
@@ -66,5 +67,5 @@ matched_maf <- fuzzy_match_mafs(
     maf1 = maf_1,
     maf2 = maf_1
 )
-
+}
 }
