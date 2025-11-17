@@ -88,7 +88,7 @@ get_gambl_colours <- function(classification = "all",
 
   all_colours[["type"]] <- c(
 
-     "gain" = "#B2182B",
+    "gain" = "#B2182B",
     "loss" = "#4393C3")
 
   all_colours[["hmrn"]] <- c(
@@ -118,7 +118,19 @@ get_gambl_colours <- function(classification = "all",
     "DLBCL-B" = "#FB9A99",
     "DLBCL-C" = "#C41230",
     "DLBCLesque" = "#721F0F",
-    "DLBCL-like" = "#721F0F")
+    "DLBCL-like" = "#721F0F",
+    "HyperBL" = "#6A3D9A",
+    "HypoBL" = "#CAB2D6",
+    "unclassified" = "gray61"
+    )
+
+  all_colours[["Epitype"]] <- c(
+    "HyperBL" = "#6A3D9A",
+    "HypoBL" = "#CAB2D6",
+    "unclassified" = "gray61"
+  )
+
+  all_colours[["epitype"]] <- all_colours[["Epitype"]]
 
   all_colours[["FL"]] <- c(dFL = "#99C1B9",
                            cFL = "#D16666",
