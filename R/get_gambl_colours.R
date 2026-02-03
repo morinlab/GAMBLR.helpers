@@ -201,15 +201,6 @@ get_gambl_colours <- function(classification = "all",
     C5 = "#E14630"
   )
   
-  all_colours[["DLBClass"]] <- c(
-    C0 = "#bebebe",
-    C1 = "#68409A",
-    C2 = "#57ACD3",
-    C3 = "#F09344",
-    C4 = "#5A8A44",
-    C5 = "#E14630"
-  )
-  
   all_colours[["DLBClass"]] <- all_colours[["chapuy_classifier"]]
   
   all_colours[["lacy_classifier"]] <- all_colours[["hmrn"]]
