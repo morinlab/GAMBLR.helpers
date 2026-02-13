@@ -190,6 +190,30 @@ get_gambl_colours <- function(classification = "all",
   )
 
   all_colours[["lacy_classifier"]] <- all_colours[["hmrn"]]
+  all_colours[["lymphly"]] <- c(
+    "EZB"   = "#721F0F",
+    "JS6"   = "#159604",
+    "JS3"   = "#e04c6a",
+    "BN2"   = "#7F3293",
+    "MCD" = "#3B5FAC",
+    "N1" = "#7FC787",
+    "MYC+"  = "#a850d4",
+    "TP53+" = "#7d7780"
+  )
+  all_colours[["lymphly-lymphgen"]] <- c(
+    "EZB-MYC" = "#52000F",
+    "EZB" = "#721F0F",
+    "JS6"   = "#49a472",
+    "JS3"   = "#e04c6a",
+    "ST2" = "#C41230",
+    "MCD" = "#3B5FAC",
+    "BN2" = "#7F3293",
+    "N1" = "#7FC787",
+    "MYC+"  = "#a850d4",
+    "TP53+" = "#7d7780",
+    "Other" = "#ACADAF",
+    "COMPOSITE" = "#403a2b"
+  )
 
   all_colours[["lymphgen"]] <- c(
     "EZB-MYC" = "#52000F",
@@ -374,6 +398,7 @@ get_gambl_colours <- function(classification = "all",
     "HGBL-NOS" = "#294936",
     "HGBL" = "#294936",
     "HGBL-DH/TH" = "#7A1616",
+    "HGBL-DH-BCL2" = "#bf712c",
     "PBL" = "#E058C0",
     "Plasmablastic" = "#E058C0",
     "CNS" = "#E2EF60",

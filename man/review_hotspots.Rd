@@ -7,7 +7,8 @@
 review_hotspots(
   annotated_maf,
   genes_of_interest = c("FOXO1", "MYD88", "CREBBP", "NOTCH1", "NOTCH2", "CD79B", "EZH2"),
-  genome_build
+  genome_build,
+  custom_coordinates
 )
 }
 \arguments{
@@ -16,6 +17,10 @@ review_hotspots(
 \item{genes_of_interest}{A vector of genes for hotspot review. Currently only FOXO1, MYD88, CREBBP, NOTCH1, NOTCH2, CD79B and EZH2 are supported.}
 
 \item{genome_build}{Reference genome build for the coordinates in the MAF file. The default is grch37 genome build.}
+
+\item{custom_coordinates}{A data frame with custom coordinates for the hot spots.
+All mutations in any of the regions specified in the data frame will be marked as hot spots.
+The data frame must have the following columns: "Hugo_Symbol", "chrom", "start", and "end".}
 }
 \value{
 The same data frame (as given to the \code{annotated_maf} parameter) with the reviewed column "hot_spot".
