@@ -45,7 +45,7 @@ Obviously, you need to specify the same genome_build as the coordinate system us
 \examples{
 
 coding_capture_maf = GAMBLR.open::get_coding_ssm(
-  these_samples_metadata = get_gambl_metadata() \%>\%
+  these_samples_metadata = GAMBLR.open::get_gambl_metadata() \%>\%
     dplyr::filter(cohort=="dlbcl_reddy"),
   this_seq_type = "capture")
 ## annotate all supported hotspots
