@@ -39,7 +39,7 @@ reciprocate_bedpe = function(bed_df,shift_by=30){
 #'
 #' @examples
 #' 
-#' library(GAMBLR.open)
+#' # library(GAMBLR.open)
 #' \dontrun{
 #' in_bed = get_manta_sv(projection="hg38")
 #' # TODO: update decorate_bed to handle non-prefixed chromosome names

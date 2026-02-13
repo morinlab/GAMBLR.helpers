@@ -31,6 +31,7 @@
 #'        Options are \code{"stop"} (default), \code{"keep_first"}, or \code{"keep_last"}.
 #'
 #' @return A cleaned data frame that meets the expected metadata requirements.
+#' @import dplyr
 #' @export
 check_and_clean_metadata <- function(df,
                                      na_sample_id_action = c("stop", "drop"),
@@ -40,9 +41,6 @@ check_and_clean_metadata <- function(df,
   na_sample_id_action <- match.arg(na_sample_id_action)
   invalid_seq_type_action <- match.arg(invalid_seq_type_action)
   duplicate_action <- match.arg(duplicate_action)
-  
-  # Load dplyr (assumes it is installed and available)
-  require(dplyr)
   
   # Validate required columns exist using base R
   required_cols <- c("sample_id", "seq_type", "pathology")

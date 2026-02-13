@@ -12,27 +12,45 @@ review_hotspots(
 )
 }
 \arguments{
-\item{annotated_maf}{A data frame in MAF format that has hotspots annotated using the function annotate_hotspots().}
+\item{annotated_maf}{A data frame in MAF format that has hotspots annotated
+using the function annotate_hotspots().}
 
-\item{genes_of_interest}{A vector of genes for hotspot review. Currently only FOXO1, MYD88, CREBBP, NOTCH1, NOTCH2, CD79B and EZH2 are supported.}
+\item{genes_of_interest}{A vector of genes for hotspot review. Currently only
+FOXO1, MYD88, CREBBP, NOTCH1, NOTCH2, CD79B and EZH2 are supported.}
 
-\item{genome_build}{Reference genome build for the coordinates in the MAF file. The default is grch37 genome build.}
+\item{genome_build}{Reference genome build for the coordinates in the MAF
+file. The default is grch37 genome build.}
 
-\item{custom_coordinates}{A data frame with custom coordinates for the hot spots.
-All mutations in any of the regions specified in the data frame will be marked as hot spots.
-The data frame must have the following columns: "Hugo_Symbol", "chrom", "start", and "end".}
+\item{custom_coordinates}{A data frame with custom coordinates for the hot
+spots. All mutations in any of the regions specified in the data frame
+will be marked as hot spots. The data frame must have the following
+columns: "Hugo_Symbol", "chrom", "start", and "end".}
 }
 \value{
-The same data frame (as given to the \code{annotated_maf} parameter) with the reviewed column "hot_spot".
+data frame
 }
 \description{
-Annotate MAF-like data frome with a hot_spot column indicating recurrent mutations.
+Annotate MAF-like data frome with a hot_spot column indicating
+recurrent mutations.
 }
 \details{
-This function takes an annotated MAF (with annotate_hotspots) and updates an existing column, "hot_spot", in the same data frame.
-Genes for hotspot review are supplied with the \code{genes_of_interest} parameter.
-Currently only a few sets of genes are supported, see parameter description for more information and limitations.
-The desired genome build can be specified with \code{genome_build} parameter. Should be the same as the incoming MAF.
+This function takes an annotated MAF (the output of
+annotate_hotspots) and reviews an existing column, "hot_spot", in the
+provided data frame. Genes for hotspot review are supplied with the
+\code{genes_of_interest} argument. Currently only a few sets of genes are
+supported, see parameter description for more information. The desired
+genome build can be specified with \code{genome_build} argument and is
+expected to be the same as the incoming MAF. The review of hotspots is
+gene-specific and manually builds on top of the provided oncodrive
+annotations. Specifically, regardless of the oncodrive annotations,for
+FOXO1 all mutations affecting "p.M1?" will be annotated as hotspots. For
+MYD88, all mutations affecting "p.L273P" and "p.L265P" will be annotated
+as hotspots. For CREBBP, all missense mutations in the KAT domain will
+be annotated hotspots. For NOTCH1 and NOTCH2, all PEST domain mutations
+will become annotated hotspots. For CD79B, the truncating mutations will
+become annotated hotspots. Finally, for EZH2 all mutations within the
+7:148508764-148506238 (grch37, also supported in hg38 projection) will
+become annotated as hotspots.
 }
 \examples{
 hot_ssms = review_hotspots(annotate_hotspots(get_coding_ssm(this_seq_type = "genome")),
