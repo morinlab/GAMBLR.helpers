@@ -171,11 +171,13 @@ annotate_curated_hotspots = function(annotated_maf,
       dplyr::mutate(chrom = as.character(chrom))
   }
 
-  annotated_maf = annotated_maf %>%
+  maf_keep = annotated_maf %>%
     dplyr::filter(Hugo_Symbol %in% coordinates$Hugo_Symbol)
+  maf_skip = annotated_maf %>%
+    dplyr::filter(!Hugo_Symbol %in% coordinates$Hugo_Symbol)
 
   reviewed_maf = cool_overlaps(
-    annotated_maf,
+    maf_keep,
     coordinates,
     columns1 = c("Hugo_Symbol", "Chromosome", "Start_Position", "End_Position"),
     columns2 = c("Hugo_Symbol", "chrom", "start", "end"),
@@ -204,6 +206,12 @@ annotate_curated_hotspots = function(annotated_maf,
   reviewed_maf = reviewed_maf %>%
     dplyr::arrange(.row_id) %>%
     dplyr::select(-.row_id)
+
+  if(nrow(maf_skip) > 0){
+    reviewed_maf = dplyr::bind_rows(reviewed_maf, maf_skip) %>%
+      dplyr::arrange(.row_id) %>%
+      dplyr::select(-.row_id)
+  }
 
   if(original_has_maf_class && exists("create_maf_data", mode = "function")){
     reviewed_maf = create_maf_data(reviewed_maf, genome_build)
@@ -250,13 +258,6 @@ get_hotspot_coordinates = function(genome_build){
     dplyr::select(-min, -max)
 
   coordinates = dplyr::mutate(coordinates, size = end - start + 1)
-
-  # Treat single-position hotspots as "start and above"
-  coordinates = coordinates %>%
-    mutate(
-      end = ifelse(size == 1 & (is.na(strand) | strand != "-"), 300000000, end),
-      start = ifelse(size == 1 & strand == "-", 0, start)
-    )
 
   type_to_classes = function(type_value){
     if(is.na(type_value) || type_value == "" || type_value == "all"){
