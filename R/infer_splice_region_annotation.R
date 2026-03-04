@@ -1,4 +1,4 @@
-infer_splice_region_annotations <- function()
+infer_splice_region_annotation <- function()
 
 # Fix the splice region annotations
   maf <- maf %>%
