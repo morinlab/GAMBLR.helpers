@@ -83,7 +83,8 @@ get_gambl_colours <- function(classification = "all",
   all_colours[["seq_type"]] <- c(
     "mrna" = "#E41A1C",
     "genome" = "#377EB8",
-    "capture" = "#4DAF4A"
+    "capture" = "#4DAF4A",
+    "promethION" = "#f78b3e"
   )
 
   all_colours[["type"]] <- c(
