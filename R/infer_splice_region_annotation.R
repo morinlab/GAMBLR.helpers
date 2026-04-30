@@ -34,7 +34,7 @@ infer_splice_region_annotation <- function(
           paste0("p.NearSplice@AA", Amino_Acid_Position)
       )
     ) %>%
-    select(-cdna_pos, -splice_offset)
+    select(-cdna_pos, -splice_offset, -Amino_Acid_Position)
     
   return(maf) 
 }
@@ -68,4 +68,10 @@ output %>%
   head(100) %>%
   as.data.frame()
 
+identical(populated, output)
+all.equal(
+  nonpopulated,  
+  outcome
+)
+# identical() and all.equal() is same, but latter will provide more verbose output
 
