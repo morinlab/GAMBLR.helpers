@@ -10,23 +10,18 @@
 #'
 #' @return A dataframe with updated HGVSp_Short labels based on splice region.
 #'
-#' @import dplyr
-#' @import stringr
+#' @import dplyr stringr
 #' @export
 #'
-#' @examples
-#' #' #this is an example
-#' ###For your reference, this line is exactly 100 characters. Do not exceed 100 characters per line
+#' @examples 
+#' input <- GAMBLR.open::get_coding_ssm()
+#' input %>%
+#'   select(HGVSp_Short) %>% 
+#'   head(100) %>%
+#'   as.data.frame()
+#' result <- infer_splice_region_annotation(maf_data = input)
+# will display all the values included ones N/A
 
-function_name = function(a_parameter,
-                         another_parameter){
-}
-
-library(dplyr)
-library(stringr)
-
-input <- GAMBLR.open::get_coding_ssm()
-maf <- input
 
 infer_splice_region_annotation <- function(
     maf_data
@@ -62,40 +57,3 @@ infer_splice_region_annotation <- function(
     
   return(maf) 
 }
-
-infer_splice_region_annotation(maf_data = input)
-input %>%
-  select(HGVSp_Short) %>% 
-  head(100) %>%
-  as.data.frame()
-  # will display all the values included ones N/A
-
-nonpopulated <- input %>% 
-  as.data.frame() %>%
-  filter(is.na(HGVSp_Short))
-  # filter(): looks at the condition, sees if specific row matches the condition, if true will use, if not, discard
-  # is.na: function that checks whether value is empty or not 
-
-outcome <- infer_splice_region_annotation(maf_data = nonpopulated)
-outcome %>%
-  select(HGVSp_Short) %>%
-  head(100) %>%
-  as.data.frame()
-
-populated <- input %>%
-  as.data.frame() %>%
-  filter(!is.na(HGVSp_Short))
-
-output <- infer_splice_region_annotation(maf_data = populated)
-output %>%
-  select(HGVSp_Short) %>%
-  head(100) %>%
-  as.data.frame()
-
-identical(populated, output)
-all.equal(
-  nonpopulated,  
-  outcome
-)
-# identical() and all.equal() is same, but latter will provide more verbose output
-
