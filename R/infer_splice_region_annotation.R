@@ -1,3 +1,27 @@
+#' @title Infer Splice Region Annotation
+#'
+#' @description Extracts cDNA position and splice offset (e.g., c.123+1G>A) to calculate the 
+#' affected amino acid and assign a protein label (e.g., p.Splice_Donor+1@AA41).
+#'
+#' @details The function uses ceiling(abs(cdna_pos)/3) to determine the Amino Acid position.
+#' Labels are assigned as Splice_Donor (+), Splice_Acceptor (-), or NearSplice (no offset).
+#'
+#' @param maf_data A dataframe containing HGVSc and HGVSp_Short columns.
+#'
+#' @return A dataframe with updated HGVSp_Short labels based on splice region.
+#'
+#' @import dplyr
+#' @import stringr
+#' @export
+#'
+#' @examples
+#' #' #this is an example
+#' ###For your reference, this line is exactly 100 characters. Do not exceed 100 characters per line
+
+function_name = function(a_parameter,
+                         another_parameter){
+}
+
 library(dplyr)
 library(stringr)
 
