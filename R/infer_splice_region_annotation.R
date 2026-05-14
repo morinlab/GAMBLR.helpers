@@ -22,7 +22,6 @@
 #' result <- infer_splice_region_annotation(maf_data = input)
 # will display all the values included ones N/A
 
-
 infer_splice_region_annotation <- function(
     maf_data
 ){
