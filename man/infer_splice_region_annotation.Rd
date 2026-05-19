@@ -21,10 +21,21 @@ The function uses ceiling(abs(cdna_pos)/3) to determine the Amino Acid position.
 Labels are assigned as Splice_Donor (+), Splice_Acceptor (-), or NearSplice (no offset).
 }
 \examples{
-input <- GAMBLR.open::get_coding_ssm()
+\dontrun{
+input <- get_coding_ssm()
+
+# inspect current NAs in splice regions
 input \%>\%
-  select(HGVSp_Short) \%>\% 
-  head(100) \%>\%
+  filter(is.na(HGVSp_Short)) \%>\% 
+  head(10) \%>\%
   as.data.frame()
+
+# infer these annotations
 result <- infer_splice_region_annotation(maf_data = input)
+result \%>\%
+  filter(is.na(HGVSp_Short)) \%>\% 
+  head(10) \%>\%
+  as.data.frame()
+
+}
 }

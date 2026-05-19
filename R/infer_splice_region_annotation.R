@@ -13,14 +13,24 @@
 #' @import dplyr stringr
 #' @export
 #'
-#' @examples 
-#' input <- GAMBLR.open::get_coding_ssm()
+#' @examples
+#' \dontrun{
+#' input <- get_coding_ssm()
+#' 
+#' # inspect current NAs in splice regions
 #' input %>%
-#'   select(HGVSp_Short) %>% 
-#'   head(100) %>%
+#'   filter(is.na(HGVSp_Short)) %>% 
+#'   head(10) %>%
 #'   as.data.frame()
+#' 
+#' # infer these annotations
 #' result <- infer_splice_region_annotation(maf_data = input)
-# will display all the values included ones N/A
+#' result %>%
+#'   filter(is.na(HGVSp_Short)) %>% 
+#'   head(10) %>%
+#'   as.data.frame()
+#' 
+#' }
 
 infer_splice_region_annotation <- function(
     maf_data
