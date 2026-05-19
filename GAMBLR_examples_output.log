@@ -1,5 +1,5 @@
-[1] "=== STARTED AT 2025-10-14 13:36:36.376485 ==="
-── Running 42 example files ─────────────────────────────────────────────────────────────────────── GAMBLR.helpers ──
+[1] "=== STARTED AT 2026-05-19 15:53:30 ==="
+── Running 43 example files ──────────────────────────────────── GAMBLR.helpers ──
 
 > library(GAMBLR.open)
 
@@ -53,6 +53,22 @@ Showing first 10 rows:
 +     as_rgb_string = T))
 
 > lymphgen_cols <- get_gambl_colours("lymphgen")
+
+> input <- get_coding_ssm()
+
+> no_annotations <- input %>% dplyr::filter(is.na(HGVSp_Short), 
++     Hugo_Symbol == "RFX7")
+
+> result <- infer_splice_region_annotation(maf_data = no_annotations)
+
+> result %>% dplyr::select(Hugo_Symbol, Variant_Classification, 
++     HGVSp_Short) %>% head %>% as.data.frame
+  Hugo_Symbol Variant_Classification               HGVSp_Short
+1        RFX7          Splice_Region     p.Splice_Donor+3@AA54
+2        RFX7          Splice_Region p.Splice_Acceptor-11@AA54
+3        RFX7          Splice_Region     p.Splice_Donor+3@AA65
+4        RFX7          Splice_Region    p.Splice_Donor+5@AA271
+5        RFX7          Splice_Region    p.Splice_Donor+3@AA271
 
 > P <- c(0.1, 0.4, 0.3, 0.2)
 
@@ -193,4 +209,4 @@ NFYA     test
 
 > trimmed
 [1] 0.0000000 0.4848485 1.0000000 0.4848485 0.6363636
-[1] "=== COMPLETED AT 2025-10-14 13:38:05.35861 ==="
+[1] "=== COMPLETED AT 2026-05-19 15:54:34 ==="
