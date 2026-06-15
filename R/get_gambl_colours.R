@@ -83,12 +83,13 @@ get_gambl_colours <- function(classification = "all",
   all_colours[["seq_type"]] <- c(
     "mrna" = "#E41A1C",
     "genome" = "#377EB8",
-    "capture" = "#4DAF4A"
+    "capture" = "#4DAF4A",
+    "promethION" = "#f78b3e"
   )
 
   all_colours[["type"]] <- c(
 
-     "gain" = "#B2182B",
+    "gain" = "#B2182B",
     "loss" = "#4393C3")
 
   all_colours[["hmrn"]] <- c(
@@ -118,7 +119,19 @@ get_gambl_colours <- function(classification = "all",
     "DLBCL-B" = "#FB9A99",
     "DLBCL-C" = "#C41230",
     "DLBCLesque" = "#721F0F",
-    "DLBCL-like" = "#721F0F")
+    "DLBCL-like" = "#721F0F",
+    "HyperBL" = "#6A3D9A",
+    "HypoBL" = "#CAB2D6",
+    "unclassified" = "gray61"
+    )
+
+  all_colours[["Epitype"]] <- c(
+    "HyperBL" = "#6A3D9A",
+    "HypoBL" = "#CAB2D6",
+    "unclassified" = "gray61"
+  )
+
+  all_colours[["epitype"]] <- all_colours[["Epitype"]]
 
   all_colours[["FL"]] <- c(dFL = "#99C1B9",
                            cFL = "#D16666",
@@ -182,13 +195,15 @@ get_gambl_colours <- function(classification = "all",
 
   all_colours[["chapuy_classifier"]] <- c(
     C0 = "#bebebe",
-    C1 = "#803D99",
-    C2 = "#00A2D2",
-    C3 = "#F39123",
-    C4 = "#50BFAD",
-    C5 = "#DE292A"
+    C1 = "#68409A",
+    C2 = "#57ACD3",
+    C3 = "#F09344",
+    C4 = "#5A8A44",
+    C5 = "#E14630"
   )
-
+  
+  all_colours[["DLBClass"]] <- all_colours[["chapuy_classifier"]]
+  
   all_colours[["lacy_classifier"]] <- all_colours[["hmrn"]]
   all_colours[["lymphly"]] <- c(
     "EZB"   = "#721F0F",
