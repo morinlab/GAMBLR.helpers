@@ -152,9 +152,10 @@ cool_overlaps <- function(
 
     # Return matches based on mode
     if(type == "any"){
-        message(
-            "Running in default mode of any..."
-        )
+        if (!isTRUE(getOption("GAMBLR.helpers.shown_overlaps_msg"))) {
+          message("Running in default mode of any...")
+          options(GAMBLR.helpers.shown_overlaps_msg = TRUE)
+        }
         overlap <- overlap %>%
             dplyr::filter(
                 !!sym(start2) >= !!sym(start1) & !!sym(end2) <= !!sym(end1) |

@@ -88,13 +88,19 @@ check_and_clean_metadata <- function(df,
         group_by(sample_id, seq_type) %>% 
         slice(1) %>% 
         ungroup()
-      message("Duplicate rows (keeping first occurrence) for 'sample_id' and 'seq_type' have been dropped.")
+      if (!isTRUE(getOption("GAMBLR.helpers.shown_dedup_msg"))) {
+        message("Duplicate rows (keeping first occurrence) for 'sample_id' and 'seq_type' have been dropped.")
+        options(GAMBLR.helpers.shown_dedup_msg = TRUE)
+      }
     } else if (duplicate_action == "keep_last") {
       df <- df %>% 
         group_by(sample_id, seq_type) %>% 
         slice_tail(n = 1) %>% 
         ungroup()
-      message("Duplicate rows (keeping last occurrence) for 'sample_id' and 'seq_type' have been dropped.")
+      if (!isTRUE(getOption("GAMBLR.helpers.shown_dedup_msg"))) {
+        message("Duplicate rows (keeping last occurrence) for 'sample_id' and 'seq_type' have been dropped.")
+        options(GAMBLR.helpers.shown_dedup_msg = TRUE)
+      }
     }
   }
   
