@@ -38,7 +38,7 @@ theme_Morons = function(base_size = 14,
          axis.title.y = element_text(angle = 90, vjust = 2),
          axis.title.x = element_text(vjust = -0.2),
          axis.text = element_text(size = base_size, family = base_family),
-         axis.line = element_line(colour = "black", size = rel(0.8)),
+         axis.line = element_line(colour = "black", linewidth = rel(0.8)),
          axis.ticks = element_line(),
          panel.grid.major = element_line(colour = "#f0f0f0"),
          panel.grid.minor = element_blank(),
@@ -46,7 +46,7 @@ theme_Morons = function(base_size = 14,
          legend.position = my_legend_position,
          legend.direction = my_legend_direction,
          legend.title = element_text(face = "italic"),
-         strip.background = element_rect(color = "black", fill = "white", size = 1, linetype = "solid"),
+         strip.background = element_rect(color = "black", fill = "white", linewidth = 1, linetype = "solid"),
          strip.text = element_text(face = "bold")
     ))
 }
