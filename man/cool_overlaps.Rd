@@ -65,6 +65,20 @@ in data2 that are used for overlap. When the same columns are present in both
 data1 and data2, the output data frame will have ".x" and ".y" suffixes to
 indicate which original input data they are coming from.
 }
+\section{Known issue (needs fixing)}{
+
+Despite the description above, \code{type = "any"} (the default) currently only
+returns pairs where one region is entirely contained in the other. Regions
+that partially overlap (one crosses the start or end of the other) are
+silently missed. This should be fixed (the standard test is
+\code{start1 <= end2 & start2 <= end1}) and the fix tested across the functions
+that call \code{cool_overlaps()} with the default type in GAMBLR.helpers,
+GAMBLR.utils, GAMBLR.viz, GAMBLR.open and GAMBLR.results, since their output
+will change wherever partial overlaps were being dropped. Point-in-interval
+uses (e.g. a mutation within a segment) are not affected.
+\code{GAMBLR.utils::region_to_gene()} now uses \code{data.table::foverlaps()} instead.
+}
+
 \examples{
 # obtain maf data
 maf1 <- get_coding_ssm(
