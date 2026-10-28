@@ -11,5 +11,10 @@ This package is part of the Genomic Analysis of Mature B-cell Lymphomas (GAMBL) 
 \author{
 \strong{Maintainer}: Vladimir Souza \email{vsouza@bcgsc.ca}
 
+Authors:
+\itemize{
+  \item Vladimir Souza \email{vsouza@bcgsc.ca}
+}
+
 }
 \keyword{internal}
