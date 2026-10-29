@@ -24,6 +24,18 @@
 #' data1 and data2, the output data frame will have ".x" and ".y" suffixes to
 #' indicate which original input data they are coming from.
 #'
+#' @section Known issue (needs fixing):
+#' Despite the description above, `type = "any"` (the default) currently only
+#' returns pairs where one region is entirely contained in the other. Regions
+#' that partially overlap (one crosses the start or end of the other) are
+#' silently missed. This should be fixed (the standard test is
+#' `start1 <= end2 & start2 <= end1`) and the fix tested across the functions
+#' that call `cool_overlaps()` with the default type in GAMBLR.helpers,
+#' GAMBLR.utils, GAMBLR.viz, GAMBLR.open and GAMBLR.results, since their output
+#' will change wherever partial overlaps were being dropped. Point-in-interval
+#' uses (e.g. a mutation within a segment) are not affected.
+#' `GAMBLR.utils::region_to_gene()` now uses `data.table::foverlaps()` instead.
+#'
 #' @param data1 Data frame with data to overlap. Required parameter. The minimal
 #'      required columns are those supplied with the argument columns1. Will
 #'      dictate the naming of the columns used for overlap in the output.
@@ -152,6 +164,10 @@ cool_overlaps <- function(
 
     # Return matches based on mode
     if(type == "any"){
+        # KNOWN BUG: this only keeps containment (one region inside the
+        # other) and misses partial overlaps. See the "Known issue" section
+        # of the documentation before changing it: callers across the GAMBLR
+        # packages need re-testing.
         if (!isTRUE(getOption("GAMBLR.helpers.shown_overlaps_msg"))) {
           message("Running in default mode of any...")
           options(GAMBLR.helpers.shown_overlaps_msg = TRUE)
