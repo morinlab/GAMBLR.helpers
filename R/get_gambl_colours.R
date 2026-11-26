@@ -440,6 +440,13 @@ get_gambl_colours <- function(classification = "all",
     "DHITsig-IND" = "#003049",
     "DHITsig+" = "#D62828",
     "DHITsigPos" = "#D62828",
+    "DZsig-" = "#F58F20",
+    "DZsigNeg" = "#F58F20",
+    "DZsig-IND" = "#003049",
+    "DZsig+" = "#D62828",
+    "DZsigPos" = "#D62828",
+    "DZ" = "#D62828",
+    "DZsig" = "#D62828",
     "NA" = "#ACADAF"
   )
 
